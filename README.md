@@ -8,4 +8,4 @@ CreationPaquetDeCartes : terminé
 ## Baptiste :
 EncherePremierTour : terminé
 EnchereDeuxièmeTour : terminé
-Enchere : en cours
+Enchere : terminé
