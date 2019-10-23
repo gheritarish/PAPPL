@@ -21,4 +21,6 @@ Pli : terminé
 
 CompareCarteJeu : terminé
 
-CalcalPoint : terminé
+CalculPoint : terminé
+
+UpdateScore : terminé
