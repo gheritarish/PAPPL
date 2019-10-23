@@ -11,6 +11,7 @@ from PremierJoueur import premierJoueur
 from OrdreJoueur import ordreJoueur
 from Distribution import distribution
 from Regle import regle
+from JeuDeLaCarte import jeuDeLaCarte
 #mettre une condition pour que 2 personnes ne puissent pas avoir le meme nom
 
 def partieDeBelote():
@@ -41,6 +42,9 @@ def partieDeBelote():
     print(pre_joueur + ' est le joueur qui commence, le joueur de l\'equipe 1 a tiré ['+str(carte_equipe_1[0])+','+str(carte_equipe_1[1])+'] tandis que le joueur de l\'equipe 2 a tiré ['+str(carte_equipe_2[0])+','+str(carte_equipe_2[1])+']')
     joueur = ordreJoueur(pre_joueur, joueur)
     jeu1,jeu2,jeu3,jeu4,atout = distribution(paquet_de_carte)
+    plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout)
+    print (plis_equipe1)
+    
     
 
     
