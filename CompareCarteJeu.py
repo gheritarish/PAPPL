@@ -71,4 +71,6 @@ def compareCarteJeu(carte_meneuse, carte_jouee, atout):
                     if (valeur_1 == 'Roi'):
                         return 1
                     elif valeur_1 == 'Dame':
-                        return - 1
+                        return -1
+        else : 
+            return 1
