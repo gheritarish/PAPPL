@@ -1,7 +1,26 @@
 # PAPPL
-Alexandre :
+## Alexandre
 PartieDeBelote : en cours
+
 PremierJoueur : terminé
+
 MelangeCarte : terminé
+
 CreationPaquetDeCartes : terminé
-CompareCarte : terminé
+
+CompareCartes : terminé
+
+## Baptiste
+Enchere : terminé
+
+EncherePremierTour : terminé
+
+EnchereDeuxiemeTour : terminé
+
+Pli : terminé
+
+CompareCarteJeu : terminé
+
+CalculPoint : terminé
+
+UpdateScore : terminé
