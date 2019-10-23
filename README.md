@@ -20,3 +20,5 @@ EnchereDeuxiemeTour : terminé
 Pli : terminé
 
 CompareCarteJeu : terminé
+
+CalcalPoint : terminé
