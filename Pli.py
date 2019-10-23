@@ -9,9 +9,9 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, couleur_atout):
     joues = 0
     cartes_pli = []
     carte_meneuse = 0
+    gagnant = 4
     while joues < 4:
-        for elt in cartes_pli:
-        print("Cartes jouées :", elt[0], elt[1], "\n")
+        print("Cartes jouées :", cartes_pli)
         print("Mon jeu :")
         if (gagnant_prec + joues) % 4 == 0:
 			for i in range(len(jeu1)):
@@ -60,4 +60,7 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, couleur_atout):
             gain = compareCarteJeu(carte_meneuse, pli[-1], couleur_atout)
             if gain == 1:
             	carte_meneuse = pli[-1]
-		
+            	gagnant = (gagnant_prec + joues) % 4
+			elif gain == -1:
+				carte_meneuse = carte_meneuse
+	return jeu1, jeu2, jeu3, jeu4, gagnant, pli, belote
