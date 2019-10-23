@@ -17,4 +17,6 @@ EncherePremierTour : terminé
 
 EnchereDeuxiemeTour : terminé
 
-Pli : en cours
+Pli : terminé
+
+CompareCarteJeu : terminé
