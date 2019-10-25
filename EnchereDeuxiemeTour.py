@@ -9,7 +9,7 @@ def enchereDeuxiemeTour(jeu1, jeu2, jeu3, jeu4, carte,joueur):
     """Renvoie une liste de deux éléments avec le joueur qui a pris (entre 0 et 3) et la couleur de l'atout. Renvoie une liste d'un seul élément si personne n'a pris"""
     print("second tour d'enchere")
     for i in range(4):
-         print(joueur[i])
+         print("c\'est au tour de: "+ joueur[i])
          if i == 0:
              print(jeu1, "\n")
          elif i == 1:

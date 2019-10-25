@@ -6,14 +6,14 @@ Created on Tue Oct 22 21:40:22 2019
 """
 from Regle import regle
 from CompareCarteJeu import compareCarteJeu
-def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,joueur):
+def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,joueur,num_pli):
     joues = 0
     cartes_pli = []
     carte_meneuse = 0
     gagnant = 4
     while joues < 4:
         autorise=False
-        print(joueur[(gagnant_prec + joues) % 4])
+        print("c\'est au tour de: "+ joueur[(gagnant_prec + joues) % 4])
 
         if (gagnant_prec + joues) % 4 == 0:
             while not autorise:
@@ -24,7 +24,9 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,jou
                     print(i + 1, ":", jeu1[i], "\n")
                 choix = input("Quelle carte jouer ?")
                 choix = int(choix)
-                if regle(jeu1,cartes_pli,jeu1[choix-1],couleur_atout,carte_meneuse):
+                if choix > 8-num_pli: 
+                    print("ce numéro n\'est pas autorisé")
+                elif regle(jeu1,cartes_pli,jeu1[choix-1],couleur_atout,carte_meneuse):
                     autorise = True
                 else :
                     print("vous n'etes pas autorisé à jouer cette carte")
@@ -47,6 +49,8 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,jou
                     print(i + 1, ":", jeu2[i], "\n")
                 choix = input("Quelle carte jouer ?")
                 choix = int(choix)
+                if choix > 8-num_pli: 
+                    print("ce numéro n\'est pas autorisé")
                 if regle(jeu2,cartes_pli,jeu2[choix-1],couleur_atout,carte_meneuse):
                     autorise = True
                 else :
@@ -70,6 +74,8 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,jou
                     print(i + 1, ":", jeu3[i], "\n")
                 choix = input("Quelle carte jouer ?")
                 choix = int(choix)
+                if choix > 8-num_pli: 
+                    print("ce numéro n\'est pas autorisé")
                 if regle(jeu3,cartes_pli,jeu3[choix-1],couleur_atout,carte_meneuse):
                     autorise = True
                 else :
@@ -93,6 +99,8 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,jou
                     print(i + 1, ":", jeu4[i], "\n")
                 choix = input("Quelle carte jouer ?")
                 choix = int(choix)
+                if choix > 8-num_pli: 
+                    print("ce numéro n\'est pas autorisé")
                 if regle(jeu4,cartes_pli,jeu4[choix-1],couleur_atout,carte_meneuse):
                     autorise = True
                 else :
