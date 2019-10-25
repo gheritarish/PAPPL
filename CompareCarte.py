@@ -5,11 +5,15 @@ Created on Tue Oct 22 14:16:45 2019
 @author: alepe
 """
 
-def CompareCarte(carte_1, carte_2): #en valeur, si carte_1>carte_2 renvoit 1, si carte_1<carte_2 renvoit -1, si carte_1=carte_2 renvoit 0
+def compareCarte(carte_1, carte_2): #en valeur, si carte_1>carte_2 renvoit 1, si carte_1<carte_2 renvoit -1, si carte_1=carte_2 renvoit 0
     valeur_1 = carte_1[0]
     valeur_2 = carte_2[0]
     if valeur_1==valeur_2 :
         return 0
+    elif valeur_1==1:
+        return 1
+    elif valeur_2==1:
+        return -1
     elif (type(valeur_1)==int and type(valeur_2)==int):
         if valeur_1 > valeur_2 :
             return 1
