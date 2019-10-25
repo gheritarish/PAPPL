@@ -6,7 +6,7 @@ Created on Tue Oct 22 15:32:08 2019
 """
 from Enchere import enchere
 
-def distribution(paquet):
+def distribution(paquet,joueur):
     carte_1=[]
     carte_2=[]
     carte_3=[]
@@ -21,7 +21,7 @@ def distribution(paquet):
         elif (9<=i<12 or 16<=i<20):
             carte_4.append(paquet[i]) 
     carte_retournee=paquet[20]
-    resultat=enchere(carte_1,carte_2,carte_3,carte_4,carte_retournee)
+    resultat=enchere(carte_1,carte_2,carte_3,carte_4,carte_retournee,joueur)
     if resultat=="On redistribue":
         return "On redistribue"
     else :
@@ -71,7 +71,7 @@ def distribution(paquet):
                     carte_3.append(paquet[i]) 
                 elif (30<=i<32):
                     carte_4.append(paquet[i]) 
-        return (carte_1,carte_2,carte_3,carte_4,resultat[1])
+        return (carte_1,carte_2,carte_3,carte_4,resultat[1],resultat[0])
     
      
             

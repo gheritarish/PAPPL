@@ -6,13 +6,14 @@ Created on Tue Oct 22 21:40:22 2019
 """
 from Regle import regle
 from CompareCarteJeu import compareCarteJeu
-def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout):
+def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,joueur):
     joues = 0
     cartes_pli = []
     carte_meneuse = 0
     gagnant = 4
     while joues < 4:
         autorise=False
+        print(joueur[(gagnant_prec + joues) % 4])
 
         if (gagnant_prec + joues) % 4 == 0:
             while not autorise:
