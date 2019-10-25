@@ -41,7 +41,7 @@ def regle(jeu,pli,carte,atout,meneur):
                     for i in range(len(jeu)):
                         if jeu[i][1]==atout and compareCarteJeu(jeu[i], meneur,atout)==1:
                             return False
-                        return True
+                    return True
         else: #la couleur posée est différente
             for i in range(len(jeu)):
                 if jeu[i][1]==pli[0][1]: # on vérifie si il n'y a pas de la couleur demandé dans le jeu
@@ -55,8 +55,8 @@ def regle(jeu,pli,carte,atout,meneur):
                 if compareCarteJeu(carte,meneur,atout)==1:
                     return True
                 else:
-                    for i in range(jeu):
-                        if jeu[i][1]== atout and compreCarteJeu(jeu[i],meneur,atout)==1:
+                    for i in range(len(jeu)):
+                        if jeu[i][1]== atout and compareCarteJeu(jeu[i],meneur,atout)==1:
                             return False
                     return True
             else : #sinon il faut vérifié qu'il n'a pas d'atout dans son jeu
@@ -76,7 +76,7 @@ def regle(jeu,pli,carte,atout,meneur):
                     for i in range(len(jeu)):
                         if jeu[i][1]==atout and compareCarteJeu(jeu[i], meneur,atout)==1:
                             return False
-                        return True
+                    return True
         else: #la couleur posée est différente
             for i in range(len(jeu)):
                 if jeu[i][1]==pli[0][1]: # on vérifie si il n'y a pas de la couleur demandé dans le jeu
@@ -90,7 +90,7 @@ def regle(jeu,pli,carte,atout,meneur):
                 if compareCarteJeu(carte,meneur,atout)==1:
                     return True
                 else:
-                    for i in range(jeu):
+                    for i in range(len(jeu)):
                         if jeu[i][1]== atout and compareCarteJeu(jeu[i],meneur,atout)==1:
                             return False
                     return True
