@@ -32,8 +32,14 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,jou
                     print("vous n'etes pas autorisé à jouer cette carte")
             if jeu1[choix-1][1]==couleur_atout and jeu1[choix-1][0] in ["Dame","Roi"] and belote==4:
                 belote = input("Belote ? (y/n)")
+                while belote != "y" and belote != "n" :
+                    print("argument non valide")
+                    belote = input("Belote ? (y/n)")
             elif jeu1[choix-1][1]==couleur_atout and jeu1[choix-1][0] in ["Dame","Roi"] and belote==0:
                 rebelote = input("Rebelote ? (y/n)")
+                while rebelote != "y" and rebelote != "n" :
+                    print("argument non valide")
+                    rebelote = input("Rebelote ? (y/n)")
             cartes_pli.append(jeu1[choix - 1])
             if belote == "y":
             	belote = 0
@@ -51,14 +57,20 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,jou
                 choix = int(choix)
                 if choix > 8-num_pli: 
                     print("ce numéro n\'est pas autorisé")
-                if regle(jeu2,cartes_pli,jeu2[choix-1],couleur_atout,carte_meneuse):
+                elif regle(jeu2,cartes_pli,jeu2[choix-1],couleur_atout,carte_meneuse):
                     autorise = True
                 else :
                     print("vous n'etes pas autorisé à jouer cette carte")
             if jeu2[choix-1][1]==couleur_atout and jeu2[choix-1][0] in ["Dame","Roi"] and belote==4:
                 belote = input("Belote ? (y/n)")
+                while belote != "y" and belote != "n" :
+                    print("argument non valide")
+                    belote = input("Belote ? (y/n)")
             elif jeu2[choix-1][1]==couleur_atout and jeu2[choix-1][0] in ["Dame","Roi"] and belote==1:
                 rebelote = input("Rebelote ? (y/n)")
+                while rebelote != "y" and rebelote != "n" :
+                    print("argument non valide")
+                    rebelote = input("Rebelote ? (y/n)")
             cartes_pli.append(jeu2[choix - 1])
             if belote == "y":
             	belote = 1
@@ -76,14 +88,20 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,jou
                 choix = int(choix)
                 if choix > 8-num_pli: 
                     print("ce numéro n\'est pas autorisé")
-                if regle(jeu3,cartes_pli,jeu3[choix-1],couleur_atout,carte_meneuse):
+                elif regle(jeu3,cartes_pli,jeu3[choix-1],couleur_atout,carte_meneuse):
                     autorise = True
                 else :
                     print("vous n'etes pas autorisé à jouer cette carte")
             if jeu3[choix-1][1]==couleur_atout and jeu3[choix-1][0] in ["Dame","Roi"] and belote==4:
                 belote = input("Belote ? (y/n)")
+                while belote != "y" and belote != "n" :
+                    print("argument non valide")
+                    belote = input("Belote ? (y/n)")
             elif jeu3[choix-1][1]==couleur_atout and jeu3[choix-1][0] in ["Dame","Roi"] and belote==2:
                 rebelote = input("Rebelote ? (y/n)")
+                while rebelote != "y" and rebelote != "n" :
+                    print("argument non valide")
+                    rebelote = input("Rebelote ? (y/n)")
             cartes_pli.append(jeu3[choix - 1])
             if belote == "y":
             	belote = 2
@@ -101,14 +119,20 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,jou
                 choix = int(choix)
                 if choix > 8-num_pli: 
                     print("ce numéro n\'est pas autorisé")
-                if regle(jeu4,cartes_pli,jeu4[choix-1],couleur_atout,carte_meneuse):
+                elif regle(jeu4,cartes_pli,jeu4[choix-1],couleur_atout,carte_meneuse):
                     autorise = True
                 else :
                     print("vous n'etes pas autorisé à jouer cette carte")
             if jeu4[choix-1][1]==couleur_atout and jeu4[choix-1][0] in ["Dame","Roi"] and belote==4:
                 belote = input("Belote ? (y/n)")
+                while belote != "y" and belote != "n" :
+                    print("argument non valide")
+                    belote = input("Belote ? (y/n)")
             elif jeu4[choix-1][1]==couleur_atout and jeu4[choix-1][0] in ["Dame","Roi"] and belote==3:
                 rebelote = input("Rebelote ? (y/n)")
+                while rebelote != "y" and rebelote != "n" :
+                    print("argument non valide")
+                    rebelote = input("Rebelote ? (y/n)")
             cartes_pli.append(jeu4[choix - 1])
             if belote == "y":
             	belote = 3
