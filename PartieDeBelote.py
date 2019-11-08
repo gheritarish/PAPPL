@@ -30,7 +30,12 @@ def partieDeBelote():
     elif type_de_partie=="t" :
         tours_max = int(input("Nombre de tours? "))
     joueur=input("joueur 1 de l\'equipe 1: ")
-    race = input("1. humain ou 2. IA : ")
+    gender = input("1. humain ou 2. IA : ")
+    race = int(gender)
+    while race != 1 and race != 2:
+        print("Ceci n'est pas 1 ou 2")
+        gender = input("1. humain ou 2. IA : ")
+        race = int(gender)
     if race == 1:
         race = "Humain"
     else:
@@ -42,7 +47,12 @@ def partieDeBelote():
         print("ce nom est déjà pris")
         joueur=input("joueur 2 de l\'equipe 1: ")
         joueur = str(joueur)
-    race = input("1. humain ou 2. IA : ")
+    gender = input("1. humain ou 2. IA : ")
+    race = int(gender)
+    while race != 1 and race != 2:
+        print("Ceci n'est pas 1 ou 2")
+        gender = input("1. humain ou 2. IA : ")
+        race = int(gender)
     if race == 1:
         race = "Humain"
     else:
@@ -54,7 +64,12 @@ def partieDeBelote():
         print("ce nom est déjà pris")
         joueur=input("joueur 1 de l\'equipe 2: ")
         joueur = str(joueur)
-    race = input("1. humain ou 2. IA : ")
+    gender = input("1. humain ou 2. IA : ")
+    race = int(gender)
+    while race != 1 and race != 2:
+        print("Ceci n'est pas 1 ou 2")
+        gender = input("1. humain ou 2. IA : ")
+        race = int(gender)
     if race == 1:
         race = "Humain"
     else:
@@ -66,7 +81,12 @@ def partieDeBelote():
         print("ce nom est déjà pris")
         joueur=input("joueur 2 de l\'equipe 2: ")
         joueur = str(joueur)
-    race = input("1. humain ou 2. IA : ")
+    gender = input("1. humain ou 2. IA : ")
+    race = int(gender)
+    while race != 1 and race != 2:
+        print("Ceci n'est pas 1 ou 2")
+        gender = input("1. humain ou 2. IA : ")
+        race = int(gender)
     if race == 1:
         race = "Humain"
     else:
@@ -103,8 +123,8 @@ def partieDeBelote():
             else : 
                 points_1,points_2 = updateScore(points_1, points_2, p1, p2, 2)
             print("le score de l\' équipe 1 est: " , points_1)
-            print("\n")
             print("le score de l\' équipe 2 est: ", points_2)
+            print("\n")
             joueur= ordreJoueur(joueur[0][0],joueur)
     if type_de_partie=="t":
         for k in range(tours_max):
@@ -125,7 +145,6 @@ def partieDeBelote():
             print("le score de l\' équipe 2 est: ", points_2)
             print("\n")
             joueur= ordreJoueur(joueur[0][0],joueur)
-    
     
     
     

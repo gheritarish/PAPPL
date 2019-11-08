@@ -179,8 +179,8 @@ def pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,j
                 elif jeu3[card][1] == couleur_atout and jeu3[card][0] in ["Dame", "Roi"] and belote == 0:
                     rebelote = 2
                 jeu3.pop(card)
-            elif (gagnant_prec + joues) % 4 == 0:
-                for i in range(len(jeu1)):
+            elif (gagnant_prec + joues) % 4 == 3:
+                for i in range(len(jeu4)):
                     if regle(jeu4, cartes_pli, jeu4[i], couleur_atout, carte_meneuse):
                         cartes_possibles.append(i)
                 jouer = rd.randint(1, len(cartes_possibles))
@@ -192,7 +192,6 @@ def pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,j
                     rebelote = 3
                 jeu4.pop(card)
         
-        a = 0
         if carte_meneuse == 0:
             carte_meneuse = cartes_pli[-1]
             gagnant=(gagnant_prec + joues) % 4
@@ -203,6 +202,7 @@ def pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,j
                 gagnant = (gagnant_prec + joues) % 4
             elif gain == 1:
                 carte_meneuse = carte_meneuse
+        
         joues += 1
 
  
