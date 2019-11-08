@@ -4,7 +4,7 @@ Created on Tue Oct 22 17.13.30
 
 @author: telmar
 """
-from Pli import pli
+from PliIA import pliIA
 def jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur):
     """Le joueur 4 n'existe pas. Belote reste à joueur 4 si personne ne l'a"""
     belote = 4
@@ -14,7 +14,7 @@ def jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur):
     plis_equipe2 = []
     numero_pli=0
     for i in range(8):
-        jeu1, jeu2, jeu3, jeu4,gagnant, plis,belote,rebelote = pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, atout,joueur,numero_pli)
+        jeu1, jeu2, jeu3, jeu4,gagnant, plis,belote,rebelote = pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, atout,joueur,numero_pli)
         gagnant_prec = gagnant
         if gagnant in [0,2]:
             plis_equipe1.append(plis)

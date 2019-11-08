@@ -6,12 +6,12 @@ Created on Wed Oct 23 11:48:13 2019
 """
 
 def ordreJoueur(premier_joueur,joueur):
-    if joueur[0]==premier_joueur :
+    if joueur[0][0]==premier_joueur :
         ordre=[joueur[1],joueur[2],joueur[3],joueur[0]]
-    elif joueur[1]==premier_joueur :
+    elif joueur[1][0]==premier_joueur :
         ordre=[joueur[2],joueur[3],joueur[0],joueur[1]]
-    elif joueur[2]==premier_joueur :
+    elif joueur[2][0]==premier_joueur :
         ordre=[joueur[3],joueur[0],joueur[1],joueur[2]]
-    elif joueur[3]==premier_joueur :
+    elif joueur[3][0]==premier_joueur :
         ordre=[joueur[0],joueur[1],joueur[2],joueur[3]]
     return ordre

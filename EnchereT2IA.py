@@ -49,7 +49,7 @@ def enchereDeuxiemeTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
                     if coul_choisie == 1:
                         return [i, "trèfle"]
                     elif coul_choisie == 2:
-                    return [i, "pique"]
+                        return [i, "pique"]
                     else:
                         return [i, "coeur"]
                 else:
