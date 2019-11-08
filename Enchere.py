@@ -4,8 +4,8 @@ Created on Tue Oct 22 14:57:10 2019
 
 @author: telmar
 """
-from EncherePremierTour import encherePremierTour
-from EnchereDeuxiemeTour import enchereDeuxiemeTour
+from EnchereT1IA import encherePremierTourIA
+from EnchereT2IA import enchereDeuxiemeTourIA
 
 
 def enchere(jeu1, jeu2, jeu3, jeu4, carte,joueur):
