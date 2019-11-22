@@ -16,8 +16,8 @@ def pliIA(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_p
     card = cartes_possibles[jouer-1]
     cartes_pli.append(jeu[card])
     if jeu[card][1] == couleur_atout and jeu[card][0] in ["Dame", "Roi"] and belote == 4:
-         belote = 0
-        elif jeu[card][1] == couleur_atout and jeu[card][0] in ["Dame", "Roi"] and belote == 0:
+        belote = 0
+    elif jeu[card][1] == couleur_atout and jeu[card][0] in ["Dame", "Roi"] and belote == num_joueur:
         rebelote = 0
     jeu.pop(card)
     return jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse

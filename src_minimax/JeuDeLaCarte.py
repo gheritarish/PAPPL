@@ -4,7 +4,7 @@ Created on Tue Oct 22 17:13:30 2019
 
 @author: telmar
 """
-from PliIA import pliIA
+from Pli import pli
 from CreationPaquetDeCartes import creationPaquetDeCartes
 from SuppressionCartes import suppressionCartes
 
