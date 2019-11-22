@@ -6,6 +6,7 @@ Created on Tue Oct 22 17:13:30 2019
 """
 from PliIA import pliIA
 from CreationPaquetDeCartes import creationPaquetDeCartes
+from SuppressionCartes import suppressionCartes
 
 def jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur):
     """Le joueur 4 n'existe pas. Belote reste à joueur 4 si personne ne l'a"""

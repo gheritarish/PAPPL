@@ -7,6 +7,8 @@ Created on Tue Oct 22 21:40:22 2019
 from Regle import regle
 from CompareCarteJeu import compareCarteJeu
 import random as rd
+from CartesJouables import cartesJouables
+
 def pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,joueur,num_pli):
     joues = 0
     cartes_pli = []
@@ -16,9 +18,7 @@ def pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,j
         autorise=False
         cartes_possibles = []
         if (gagnant_prec + joues) % 4 == 0:
-            for i in range(len(jeu1)):
-                if regle(jeu1, cartes_pli, jeu1[i], couleur_atout, carte_meneuse):
-                    cartes_possibles.append(i)
+            cartes_possibles = cartesJouables(jeu1, cartes_pli, couleur_atout, carte_meneuse)
             jouer = rd.randint(1, len(cartes_possibles))
             card = cartes_possibles[jouer-1]
             cartes_pli.append(jeu1[card])
@@ -28,9 +28,7 @@ def pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,j
                 rebelote = 0
             jeu1.pop(card)
         elif (gagnant_prec + joues) % 4 == 1:
-            for i in range(len(jeu2)):
-                if regle(jeu2, cartes_pli, jeu2[i], couleur_atout, carte_meneuse):
-                    cartes_possibles.append(i)
+            cartes_possibles = cartesJouables(jeu2, cartes_pli, couleur_atout, carte_meneuse)
             jouer = rd.randint(1, len(cartes_possibles))
             card = cartes_possibles[jouer-1]
             cartes_pli.append(jeu2[card])
@@ -40,9 +38,7 @@ def pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,j
                 rebelote = 1
             jeu2.pop(card)
         elif (gagnant_prec + joues) % 4 == 2:
-            for i in range(len(jeu3)):
-                if regle(jeu3, cartes_pli, jeu3[i], couleur_atout, carte_meneuse):
-                    cartes_possibles.append(i)
+            cartes_possibles = cartesJouables(jeu2, cartes_pli, couleur_atout, carte_meneuse)
             jouer = rd.randint(1, len(cartes_possibles))
             card = cartes_possibles[jouer-1]
             cartes_pli.append(jeu3[card])
@@ -52,9 +48,7 @@ def pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, couleur_atout,j
                 rebelote = 2
                 jeu3.pop(card)
         elif (gagnant_prec + joues) % 4 == 3:
-            for i in range(len(jeu4)):
-                if regle(jeu4, cartes_pli, jeu4[i], couleur_atout, carte_meneuse):
-                     cartes_possibles.append(i)
+            cartes_possibles = cartesJouables(jeu2, cartes_pli, couleur_atout, carte_meneuse)
             jouer = rd.randint(1, len(cartes_possibles))
             card = cartes_possibles[jouer-1]
             cartes_pli.append(jeu4[card])
