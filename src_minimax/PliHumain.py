@@ -38,4 +38,4 @@ def pliHumain(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, n
     if rebelote == "y":
         rebelote == num_joueur
     jeu.pop(choix-1)
-    return jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, num_joueur
+    return jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse

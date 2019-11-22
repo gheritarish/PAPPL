@@ -18,7 +18,7 @@ def jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur):
     cartes_restantes = creationPaquetDeCartes()
     numero_pli=0
     for i in range(8):
-        jeu1, jeu2, jeu3, jeu4,gagnant, plis,belote,rebelote = pliIA(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote,rebelote, atout,joueur,numero_pli)
+        jeu1, jeu2, jeu3, jeu4, gagnant, plis, belote, rebelote = pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, atout, joueur, numero_pli)
         gagnant_prec = gagnant
         if gagnant in [0,2]:
             plis_equipe1.append(plis)
