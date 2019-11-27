@@ -8,6 +8,7 @@ Created on Wed Oct 23 15:19:35
 def calculPoint(plis_eq1, plis_eq2, gagnant_der, atout, belote):
     points_eq1 = 0
     points_eq2 = 0
+    equipe_belote = 0
     if plis_eq1 == []:
         points_eq2 = 252
     elif plis_eq2 == []:
@@ -58,7 +59,9 @@ def calculPoint(plis_eq1, plis_eq2, gagnant_der, atout, belote):
         if belote != 4:
             if belote in [0, 2]:
                 points_eq1 += 20
+                equipe_belote = 1
             elif belote in [1, 3]:
                 points_eq2 += 20
-    return points_eq1, points_eq2
+                equipe_belote = 2
+    return points_eq1, points_eq2, equipe_belote
 
