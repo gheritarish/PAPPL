@@ -16,6 +16,7 @@ from UpdateScore import updateScore
 #mettre une condition pour que 2 personnes ne puissent pas avoir le meme nom
 
 def partieDeBelote():
+    """Fonction qui permet de gérer une partie de belote"""
     print('phase de distribution')
     paquet_de_carte = creationPaquetDeCartes()
     paquet_de_carte = melangeCarte(paquet_de_carte)
@@ -29,7 +30,7 @@ def partieDeBelote():
         points_max = int(input("combien de points maximum?"))
     elif type_de_partie=="t" :
         tours_max = int(input("Nombre de tours? "))
-    joueur=input("joueur 1 de l\'equipe 1: ")
+    joueur=input("joueur 1 de l\'equipe 1: ") # On veut savoir si le joueur est un humain ou une IA
     gender = input("1. humain ou 2. IA : ")
     race = int(gender)
     while race != 1 and race != 2:
@@ -107,7 +108,7 @@ def partieDeBelote():
     joueur = ordreJoueur(pre_joueur, joueur)
     points_1=0
     points_2=0
-    if type_de_partie=="p":
+    if type_de_partie=="p": # Dans le cas d'une partie à points
         while points_1<points_max and points_2<points_max:
             print("le joueur qui commence est :" + joueur[0][0])
             paquet_de_carte = melangeCarte(paquet_de_carte)
@@ -126,7 +127,7 @@ def partieDeBelote():
             print("le score de l\' équipe 2 est: ", points_2)
             print("\n")
             joueur= ordreJoueur(joueur[0][0],joueur)
-    if type_de_partie=="t":
+    if type_de_partie=="t": # Dans le cas d'une partie à un certain nombre de donnes
         for k in range(tours_max):
             print("le joueur qui commence est :" + joueur[0][0])
             paquet_de_carte = melangeCarte(paquet_de_carte)
