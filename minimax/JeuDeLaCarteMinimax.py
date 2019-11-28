@@ -12,14 +12,14 @@ from SuppressionCartes import suppressionCartes
 def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4, paquet,couleur_atout, difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,positionIA,poids):
     if num_pli==8: #condition d'arret, on est au dernier pli et la derniere carte est jouée
         if positionIA in [0,2]: # ATTENTION : on ne connait pas encore gagnant_der
-            points, inutile = calculPoints(plis_equipe1, plis_equipe2, gagnant_der, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
+            points, inutile = calculPoints(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
             if rebelote in [0, 2]: # On définit un poids égal au score de l'équipe qu'elle fait en jouant ainsi - le nombre de points nécessaires pour remporter le contrat
                 poids = points - 91
             else:
                 poids = points - 81
             return poids
         else:
-            inutile, points = calculPoints(plis_equipe1, plis_equipe2, gagnant_der, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
+            inutile, points = calculPoints(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
             if rebelote in [1, 3]:
                 poids = points - 91
             else:
