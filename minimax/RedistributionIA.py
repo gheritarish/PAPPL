@@ -4,7 +4,7 @@ Created on Fri Nov 22 15:39:41 2019
 
 @author: alepe
 """
-from MelangeCrate import melangeCarte
+from MelangeCarte import melangeCarte
 
 def redistributionIA(cartesAutreJoueur,position):
     cartesMelange=melangeCarte(cartesAutreJoueur)
@@ -12,9 +12,9 @@ def redistributionIA(cartesAutreJoueur,position):
     jeu2=[]
     jeu3=[]
     if position == 0 or position == 3:
-        jeu1=cartesAutreJoueur[0,len(cartesMelange)//3-1]
-        jeu2=cartesAutreJoueur[len(cartesMelange)//3,2*len(cartesMelange)//3-1]
-        jeu3=cartesAutreJoueur[len(2*cartesMelange)//3,3*len(cartesMelange)//3-1]
+        jeu1=cartesMelange[0:len(cartesMelange)//3]
+        jeu2=cartesMelange[len(cartesMelange)//3:2*len(cartesMelange)//3]
+        jeu3=cartesMelange[len(2*cartesMelange)//3:3*len(cartesMelange)//3]
     if position==1:
         for i in range(len(cartesMelange)):
             if i<=(len(cartesMelange)+1)//3-2 :

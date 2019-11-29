@@ -10,5 +10,5 @@ def cartesJouables(cartesIA, cartes_pli, couleur_atout, carte_meneuse):
     cartes_possibles=[] #va nous donner les cartes que peut jouer l'IA
     for i in range(len(cartesIA)):
         if regle(cartesIA, cartes_pli, cartesIA[i], couleur_atout, carte_meneuse):
-            cartes_possibles.append(i)
+            cartes_possibles.append(cartesIA[i])
     return cartes_possibles

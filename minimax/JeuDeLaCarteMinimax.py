@@ -6,26 +6,32 @@ Created on Fri Nov 22 17:12:25 2019
 """
 from CartesJouables import cartesJouables
 from CompareCarteJeu import compareCarteJeu
-from SuppressionCartes import suppressionCartes
+from CalculPoint import calculPoint
+from UpdateScore import updateScore
 
 #jeu1, jeu2, jeu3 , jeu4 doivent être ordonné à l'appel de la fonction
-def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4, paquet,couleur_atout, difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,positionIA,poids):
+def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,positionIA,poids,preneur):
     if num_pli==8: #condition d'arret, on est au dernier pli et la derniere carte est jouée
-        if positionIA in [0,2]: # ATTENTION : on ne connait pas encore gagnant_der
-            points, inutile = calculPoints(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
+        if positionIA in [0,2]: # ATTENTION : on ne connait pas encore gagnant_der           
+            points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
+            points_1,points_2 = updateScore(0, 0, points1, points2, preneur)
+
+                
             if rebelote in [0, 2]: # On définit un poids égal au score de l'équipe qu'elle fait en jouant ainsi - le nombre de points nécessaires pour remporter le contrat
-                poids = points - 91
+                poids = poids + points_1 - 91
             else:
-                poids = points - 81
+                poids =poids +  points_1 - 81
             return poids
         else:
-            inutile, points = calculPoints(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
+            points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
+            points_1,points_2 = updateScore(0, 0, points1, points2, preneur)
+ 
+                
             if rebelote in [1, 3]:
-                poids = points - 91
+                poids = poids +  points_2 - 91
             else:
-                poids = points - 81
+                poids =poids +  points_2 - 81
             return poids
-        #il reste à calculer les scores et à update les poids ave le score
     else : 
         cartes_pli=[]
         carte_meneuse0=0
@@ -57,14 +63,34 @@ def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4, paquet,couleur_atout, difficulte,be
                         else :
                             carte_meneuse4=carte_meneuse3
                             gagnant4=gagnant3
+                        j1=jeu1[:]
+                        j1.remove(carte1)
+                        j2=jeu2[:]
+                        j2.remove(carte2)
+                        j3=jeu3[:]
+                        j3.remove(carte3)
+                        j4=jeu4[:]
+                        j4.remove(carte4)
                         if gagnant4 ==1:
-                            poids=jeuDeLaCarteMinimax(jeu1.remove(carte1),jeu2.remove(carte2),jeu3.remove(carte3),jeu4.remove(carte4), suppressionCartes(paquet,cartes_pli),couleur_atout,difficulte,belote,rebelote,plis_equipe1.append(cartes_pli),plis_equipe2,num_pli+1,positionIA,poids)
+                            plis_equipe1.append(cartes_pli)                            
+                            poids=jeuDeLaCarteMinimax(j1,j2,j3,j4,couleur_atout,difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poids,preneur)
+                            plis_equipe1.remove(cartes_pli)
+                            
                         if gagnant4 ==2:
-                            poids=jeuDeLaCarteMinimax(jeu2.remove(carte2),jeu3.remove(carte3),jeu4.remove(carte4),jeu1.remove(carte1), suppressionCartes(paquet,cartes_pli),couleur_atout,difficulte,belote,rebelote,plis_equipe2.append(cartes_pli),plis_equipe1,num_pli+1,(positionIA+1)%4,poids)
+                            plis_equipe2.append(cartes_pli)                            
+                            poids=jeuDeLaCarteMinimax(j2,j3,j4,j1,couleur_atout,difficulte,belote,rebelote,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poids,(preneur+1)%2)
+                            plis_equipe2.remove(cartes_pli)
+                            
                         if gagnant4 ==3:
-                            poids=jeuDeLaCarteMinimax(jeu3.remove(carte3),jeu4.remove(carte4),jeu1.remove(carte1),jeu2.remove(carte2), suppressionCartes(paquet,cartes_pli),couleur_atout, difficulte,belote,rebelote,plis_equipe1.append(cartes_pli),plis_equipe2,num_pli+1,(positionIA+2)%4,poids)
+                            plis_equipe1.append(cartes_pli)                            
+                            poids=jeuDeLaCarteMinimax(j3,j4,j1,j2,couleur_atout, difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poids,(preneur+2)%2)
+                            plis_equipe1.remove(cartes_pli)
+                            
                         if gagnant4 ==4:
-                            poids=jeuDeLaCarteMinimax(jeu4.remove(carte4),jeu1.remove(carte1),jeu2.remove(carte2),jeu3.remove(carte3), suppressionCartes(paquet,cartes_pli),couleur_atout, difficulte,belote,rebelote,plis_equipe2.append(cartes_pli),plis_equipe1,num_pli+1,(positionIA+3)%4,poids)
+                            plis_equipe2.append(cartes_pli)                            
+                            poids=jeuDeLaCarteMinimax(j4,j1,j2,j3,couleur_atout, difficulte,belote,rebelote,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poids,(preneur+3)%2)
+                            plis_equipe2.remove(cartes_pli)
+                            
                         cartes_pli.pop(-1)
                     cartes_pli.pop(-1)
                 cartes_pli.pop(-1)
