@@ -8,6 +8,21 @@ from CartesJouables import cartesJouables
 from CompareCarteJeu import compareCarteJeu
 from CalculPoint import calculPoint
 from UpdateScore import updateScore
+"""
+Cette fonction sera appelé à la fin pour finir les tours de jeux pour chaque appel récurssif de l'IA 
+paramètre:
+    @jeu1, jeu2, jeu3, jeu4 = jeux des 4 joueurs (dans l'ordre où ils vont jouer ce tour!) ce sont des listes de cartes
+    @couleur_atout = couleur de l'atout de cette manche, c'est un string
+    @ difficulte = entier qui définie la difficulté de l'IA
+    @ belote, rebelote = prend les valeurs "y" ou "n" suivant qu'une belote ou une rebelote ait été dite ou non
+    @ plis_equipe1 = liste des plis de l'equipe 1 depuis le debut de la manche(un plis etant une liste de 4 cartes) jeu1 et jeu3 sont les joueurs de cette equipe
+    @plis_equipe2 = liste des plis de l'equipe 2 depuis le debut de la manche(un plis etant une liste de 4 cartes) jeu2 et jeu3 sont les joueurs de cette equipe
+    @ num_pli = entier entre 0 et 8 correspondant au numero du pli de la manche qui a été terminé (à 8 la manche est finis)
+    @ positionIA= entier entre 0 et 3 qui correspond à la postion de l'IA dans ce tour
+    @poids= liste des poids pour l'IA
+    @preneur= entier entre 0 et 3 qui correspond au joueur qui a pris l'atout à cette manche
+
+"""
 
 #jeu1, jeu2, jeu3 , jeu4 doivent être ordonné à l'appel de la fonction
 def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,positionIA,poids,preneur):
