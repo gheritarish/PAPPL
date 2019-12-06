@@ -25,9 +25,9 @@ def encherePremierTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
             print(carte)
             res = input("Voulez-vous prendre ? (y/n)")
             
-            if prise == "y":
+            if prise == "y": # Si quelqu'un prend, on renvoie le joueur et l'atout
                 return [i, carte[1]]
-        else:
+        else: # Si le joueur est une IA, elle tire au hasard si elle prend ou pas
             prise = rd.randint(1,2)
             if prise == 1:
                 return [i, carte[1]]
