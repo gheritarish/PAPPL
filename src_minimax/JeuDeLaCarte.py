@@ -18,7 +18,7 @@ def jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur,difficulte,preneur):
     cartes_restantes = creationPaquetDeCartes()
     numero_pli=0
     for i in range(8): # Pour chacun des tours
-        jeu1, jeu2, jeu3, jeu4, gagnant, plis, belote, rebelote = pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, atout, joueur, numero_pli,difficulte,preneur)
+        jeu1, jeu2, jeu3, jeu4, gagnant, plis, belote, rebelote = pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, atout, joueur, numero_pli,difficulte,preneur,plis_equipe1,plis_equipe2)
         gagnant_prec = gagnant
         if gagnant in [0,2]: # On ajoute le pli qui vient d'être fait à l'équipe qui l'a fait
             plis_equipe1.append(plis)
