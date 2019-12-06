@@ -19,15 +19,14 @@ carte_meneuse = carte la plus forte du pli en cours (vaut 0 si aucune carte n'a 
 meneur = position du meneur du pli en cours (valeur entre 1 et 4)
 cartes_pli = liste des cartes du pli en cours
 difficule = valeur strictement positif qui correspond à la force de l'IA
-belote = y ou n selon qu'un joueur ait dis ou non belote
-rebelote = y ou n suivant qu'un joueur ait dit ou non rebelote
+belote = entre 0 et 4 selon qu'un joueur ait dis ou non belote
+rebelote = entre 0 et 4 suivant qu'un joueur ait dit ou non rebelote
 plis_equipe1 = liste des plis de l'equipe 1 (c'est une liste de liste de cartes)
 plis equipe2 = liste des plis de l'equipe 2
 num_pli = numero du pli precedent
 preneur = equipe qui a prise en debut de partie (vaut 1 ou 2)
 '''
-def 
-:
+def minimax(cartesIA, paquet,couleur_atout,carte_meneuse,meneur, cartes_pli,difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,preneur):
     cartes_possibles=cartesJouables(cartesIA, cartes_pli, couleur_atout, carte_meneuse) # on recupère les cartes jouables
     cartesAutreJoueur=suppressionCartes(suppressionCartes(paquet,cartes_pli), cartesIA) #cartes à redistribuer
     poids=np.zeros(len(cartes_possibles)) #matrice des poids de chaque cartes
@@ -66,8 +65,8 @@ meneur=1
 cartes_pli=[['Valet', 'pique'],['Dame', 'pique'],['Roi', 'coeur']]
 carte_meneuse=['Valet', 'pique']
 difficulte=10
-belote='n'
-rebelote='n'
+belote=4
+rebelote=4
 plis_equipe1=[[[1, 'pique'],[7, 'pique'], [8, 'pique'], [9, 'pique']], [[10, 'pique'],[1, 'trèfle'],[8, 'trèfle'],['Dame', 'trèfle']],[[1, 'carreau'],[9, 'carreau'],['Dame', 'carreau'],['Valet', 'carreau']]]
 plis_equipe2=[[[7, 'coeur'], [8, 'coeur'], [9, 'coeur'], [10, 'coeur']], [['Valet', 'coeur'], ['Dame', 'coeur'],[9, 'trèfle'],[8, 'carreau']]]
 num_pli=5

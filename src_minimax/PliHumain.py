@@ -16,7 +16,7 @@ def pliHumain(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, n
             print(i + 1, ":", jeu[i], "\n")
         choix = input("Quelle carte jouer ?")
         choix = int(choix)
-        if choix > 8-nup_pli:
+        if choix > 8-num_pli:
             print("Ce numéro n'est pas autorisé")
         elif regle(jeu, cartes_pli, jeu[choix-1], couleur_atout, carte_meneuse):
             autorise = True
