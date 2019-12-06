@@ -10,7 +10,7 @@ import random as rd
 from CartesJouables import cartesJouables
 
 def pliIA(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, num_joueur):
-    """Fonction qui permet à une IA naïve de jouer"""
+    """Fonction qui permet à une IA naïve de jouer. Prend en arguments le jeu de l'IA, les cartes du pli, le joueur qui a fait une belote et une rebelote, la couleur de l'atout, la carte meneuse, le numéro du pli et le numéro du joueur"""
     autorise=False
     cartes_possibles = cartesJouables(jeu, cartes_pli, couleur_atout, carte_meneuse) # On fait la liste des indices des cartes que l'IA peut jouer
     jouer = rd.randint(1, len(cartes_possibles)) # On choisit un indice de cartes au hasard parmi ces indices

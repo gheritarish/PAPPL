@@ -24,7 +24,7 @@ def enchereDeuxiemeTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
                 print(jeu4, "\n")
             print(carte)
             prise = input("Voulez-vous prendre ? (y/n)")
-            if prise == "y":
+            if prise == "y": # Si l'IA prend, elle choisit quelle couleur sera l'atout
                 if couleur == "pique":
                     print("1. Trèfle \n2. Carreau \n3. Coeur")
                     coul_choisie = int(input("Choisissez le numéro de la couleur"))

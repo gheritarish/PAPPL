@@ -7,7 +7,7 @@ Created on Tue Oct 22 21:40:22 2019
 from Regle import regle
 from CompareCarteJeu import compareCarteJeu
 def pliHumain(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, num_joueur):
-    """Fonction qui permet à un humain de jouer"""
+    """Fonction qui permet à un humain de jouer. Prend en argument son jeu, les cartes actuelles du pli, le joueur qui a fait une belote et une rebelote, la carte meneuse, le numéro du pli et le numéro du joueur"""
     autorise = False
     while not autorise: # Tant que la carte que l'on veut jouer n'est pas autorisée par les règles
         print("Cartes jouées :", cartes_pli)

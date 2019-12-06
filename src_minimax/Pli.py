@@ -11,11 +11,11 @@ from PliHumain import pliHumain
 import random as rd
 
 def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, couleur_atout, joueur, num_pli):
-    """Fonction qui permet de gérer un pli"""
+    """Fonction qui permet de gérer un pli. Prend en argument les jeux de chaque joueur, le joueur qui commence, le joueur qui a fait une belote, une rebelote, la couleur de l'atout, la liste des joueurs et le numéro du pli dans la donne"""
     cartes_pli = []
     carte_meneuse = 0
-    gagnant = 4
-    joues = 0
+    gagnant = 4 # Désigne le gagnant du pli actuel, initialisé à 4 au début
+    joues = 0 # Nombre de joueurs ayant déjà joué au cours du pli
     while joues < 4:
         if joueur[(gagnant_prec + joues) % 4][1] != "IA": # Si le joueur est un humain
             if (gagnant_prec + joues) % 4 == 0:

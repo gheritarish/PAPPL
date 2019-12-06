@@ -6,11 +6,11 @@ Created on Wes Oct 23 14:30:35 2019
 """
 
 def compareCarteJeu(carte_meneuse, carte_jouee, atout):
-    """Permet de comparer la carte qui vient d'être jouée et la carte meneuse pendant le jeu. Renvoie 1 si la carte meneuse gagne, -1 si la carte jouée gagne"""
+    """Permet de comparer la carte qui vient d'être jouée et la carte meneuse pendant le jeu. Prend en argument deux cartes et la couleur de l'atout. Renvoie 1 si la carte meneuse gagne, -1 si la carte jouée gagne"""
     valeur_1 = carte_meneuse[0] # On retient les valeurs de chacune des cartes
     valeur_2 = carte_jouee[0]
     if carte_jouee[1] == carte_meneuse[1] and carte_meneuse[1] != atout: # Dans le cas où les deux cartes sont de la même couleur et qu'li n'y a pas d'atout
-        if valeur_1==valeur_2 :
+        if valeur_1==valeur_2:
         	return 0
         elif valeur_1==1:
         	return 1
@@ -21,9 +21,9 @@ def compareCarteJeu(carte_meneuse, carte_jouee, atout):
         elif valeur_2 == 10:
         	return -1
         elif (type(valeur_1)==int and type(valeur_2)==int):
-            if valeur_1 > valeur_2 :
+            if valeur_1 > valeur_2:
                 return 1
-            elif valeur_2> valeur_1 :
+            elif valeur_2> valeur_1:
             	return -1
         elif (type(valeur_1)==str and type(valeur_2)==int):
         	return 1

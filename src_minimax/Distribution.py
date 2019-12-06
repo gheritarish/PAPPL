@@ -7,6 +7,7 @@ Created on Tue Oct 22 15:32:08 2019
 from Enchere import enchere
 
 def distribution(paquet,joueur):
+    """Fonction qui permet de distribuer un paquet mélangé aux joueurs. Prend en arguments un paquet mélangé et la liste des joueurs"""
     carte_1=[]
     carte_2=[]
     carte_3=[]
@@ -71,7 +72,7 @@ def distribution(paquet,joueur):
                     carte_3.append(paquet[i]) 
                 elif (30<=i<32):
                     carte_4.append(paquet[i]) 
-        return (carte_1,carte_2,carte_3,carte_4,resultat[1],resultat[0])
+        return (carte_1,carte_2,carte_3,carte_4,resultat[1],resultat[0]) # On renvoie la liste dse cartes de chacun des joueurs, le joueur qui a pris et la couleur de l'atout
     
      
             

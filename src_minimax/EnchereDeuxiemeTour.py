@@ -20,7 +20,7 @@ def enchereDeuxiemeTour(jeu1, jeu2, jeu3, jeu4, carte,joueur):
              print(jeu4, "\n")
          print(carte)
          prise = input("Voulez-vous prendre ? (y/n)")
-         if prise == "y":
+         if prise == "y": # Si quelqu'un prend, on lui demande à quelle couleur il souhaite prend
              couleur = carte[1]
              if couleur == "pique":
                  print("1. Trèfle \n2. Carreau \n3. Coeur")

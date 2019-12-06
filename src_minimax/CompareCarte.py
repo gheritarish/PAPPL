@@ -6,6 +6,7 @@ Created on Tue Oct 22 14:16:45 2019
 """
 
 def compareCarte(carte_1, carte_2): #en valeur, si carte_1>carte_2 renvoit 1, si carte_1<carte_2 renvoit -1, si carte_1=carte_2 renvoit 0
+    """Fonction qui permet de comparer deux cartes en valeur pour savoir quelle équipe va commencer au tout début de la partie. Prend en argument deux cartes"""
     valeur_1 = carte_1[0]
     valeur_2 = carte_2[0]
     if valeur_1==valeur_2 :

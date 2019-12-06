@@ -16,12 +16,13 @@ from UpdateScore import updateScore
 #mettre une condition pour que 2 personnes ne puissent pas avoir le meme nom
 
 def partieDeBelote():
+    """Fonction qui permet de gérer l'intégralité de la partie de belote en faisant appel aux autres fonctions"""
     print('phase de distribution')
     paquet_de_carte = creationPaquetDeCartes()
     paquet_de_carte = melangeCarte(paquet_de_carte)
     equipe_1=[]
     equipe_2=[]
-    type_de_partie = str(input("voulez vous faire une partie aux points ou aux tours? (p/t)"))
+    type_de_partie = str(input("voulez vous faire une partie aux points ou aux tours? (p/t)")) # On demande aux joueurs quelle type de partie ils souhaitent faire
     while type_de_partie != 't' and type_de_partie !='p' :
         print("Vous n\'avez pas donné de réponse correcte")
         type_de_partie = str(input("voulez vous faire une partie aux points ou aux tours? (p/t)"))
@@ -108,7 +109,7 @@ def partieDeBelote():
     points_1=0
     points_2=0
     score_reporte = 0
-    if type_de_partie=="p":
+    if type_de_partie=="p": # Dans le cas d'une partie aux points
         while (points_1<points_max and points_2<points_max) or score_reporte != 0:
             print("le joueur qui commence est :" + joueur[0][0])
             paquet_de_carte = melangeCarte(paquet_de_carte)
