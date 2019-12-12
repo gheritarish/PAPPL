@@ -60,7 +60,6 @@ def minimax(cartesIA, paquet,couleur_atout,carte_meneuse,meneur, cartes_pli,diff
         
 '''
 cartesIA = [['Roi','pique'],[7, 'trèfle'], [1, 'coeur'],[9, 'pique'],[1, 'trèfle']]
-
 couleur_atout='pique'
 meneur=1
 cartes_pli=[]
@@ -77,7 +76,6 @@ for k in range (len(plis_equipe2)):
     paquet = suppressionCartes(paquet,plis_equipe2[k])
 num_pli=3
 preneur=1
-
 '''
 cartesIA = [[1, 'coeur'],['Dame','trèfle'],[8,'coeur'],[9,'pique'],[10,'coeur'],['Valet','pique']]
 couleur_atout='pique'
@@ -94,6 +92,4 @@ for k in range (len(plis_equipe1)):
     paquet = suppressionCartes(paquet,plis_equipe1[k])
 for k in range (len(plis_equipe2)):
     paquet = suppressionCartes(paquet,plis_equipe2[k])
-preneur=1
-#
-    
+preneur=1 

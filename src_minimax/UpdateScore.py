@@ -6,6 +6,7 @@ Created on Wed Oct 23 15:37:10
 """
 
 def updateScore(score_act_eq1, score_act_eq2, gagne_eq1, gagne_eq2, eq_preneuse, equipe_belote, score_reporte):
+    """Fonction qui met à jour les scores des deux joueurs. Prend en arguments leurs scores actuels, les points qu'ils ont marqués au cours de la donne, l'équipe qui a pris, l'équipe qui a la belote et le score reporté de la donne précédente"""
     if gagne_eq1 == gagne_eq2: # En cas d'égalité des points, on reporte les points de l'équipe preneuse à la partie suivante et l'autre équipe marque ses points
         score_reporte += gagne_eq1
         if eq_preneuse == 1:
@@ -32,4 +33,4 @@ def updateScore(score_act_eq1, score_act_eq2, gagne_eq1, gagne_eq2, eq_preneuse,
                 score_act_eq1 += 20
             elif equipe_belote == 2:
                 score_act_eq2 += 20
-    return score_act_eq1, score_act_eq2, score_reporte
+    return score_act_eq1, score_act_eq2, score_reporte # On renvoie le score mis à jour de chacune des équipes et le score reporté

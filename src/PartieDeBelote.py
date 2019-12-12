@@ -107,44 +107,47 @@ def partieDeBelote():
     joueur = ordreJoueur(pre_joueur, joueur)
     points_1=0
     points_2=0
+    score_reporte = 0
     if type_de_partie=="p":
-        while points_1<points_max and points_2<points_max:
+        while (points_1<points_max and points_2<points_max) or score_reporte != 0:
             print("le joueur qui commence est :" + joueur[0][0])
             paquet_de_carte = melangeCarte(paquet_de_carte)
             jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte,joueur)
             print("le preneur est: " + joueur[preneur][0])
             plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur)
             if joueur[0][0] in equipe_1 : 
-                p1,p2=calculPoint(plis_equipe1, plis_equipe2, gagnant, atout, belote)
+                p1, p2, equipe_belote = calculPoint(plis_equipe1, plis_equipe2, gagnant, atout, belote)
             else :
-                p1,p2=calculPoint(plis_equipe2, plis_equipe1, gagnant, atout, belote)
+                p1, p2, equipe_belote = calculPoint(plis_equipe2, plis_equipe1, gagnant, atout, belote)
             if joueur[preneur] in equipe_1 : 
-                points_1,points_2 = updateScore(points_1, points_2, p1, p2, 1)
+                points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 1, equipe_belote, score_reporte)
             else : 
-                points_1,points_2 = updateScore(points_1, points_2, p1, p2, 2)
+                points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 2, equipe_belote, score_reporte)
             print("le score de l\' équipe 1 est: " , points_1)
             print("le score de l\' équipe 2 est: ", points_2)
             print("\n")
             joueur= ordreJoueur(joueur[0][0],joueur)
-    if type_de_partie=="t":
-        for k in range(tours_max):
+    if type_de_partie=="t": # Dans le cas d'une partie au nombre de donnes
+        k = 0
+        while k < tours_max or score_reporte != 0:
             print("le joueur qui commence est :" + joueur[0][0])
             paquet_de_carte = melangeCarte(paquet_de_carte)
-            jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte)
-            print("le preneur est: " + joueur[preneur])
-            plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout)
+            jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte, joueur)
+            print("le preneur est: " + joueur[preneur][0])
+            plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout, joueur)
             if joueur[0][0] in equipe_1 : 
-                p1,p2=calculPoint(plis_equipe1, plis_equipe2, gagnant, atout, belote)
+                p1, p2, equipe_belote = calculPoint(plis_equipe1, plis_equipe2, gagnant, atout, belote)
             else :
-                p1,p2=calculPoint(plis_equipe2, plis_equipe1, gagnant, atout, belote)
+                p1, p2, equipe_belote = calculPoint(plis_equipe2, plis_equipe1, gagnant, atout, belote)
             if joueur[preneur] in equipe_1 : 
-                points_1,points_2 = updateScore(points_1, points_2, p1, p2, 1)
+                points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 1, equipe_belote, score_reporte)
             else : 
-                points_1,points_2 = updateScore(points_1, points_2, p1, p2, 2)
+                points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 2, equipe_belote, score_reporte)
             print("le score de l\' équipe 1 est: ", points_1)
             print("le score de l\' équipe 2 est: ", points_2)
             print("\n")
             joueur= ordreJoueur(joueur[0][0],joueur)
+            k += 1
     
     
     

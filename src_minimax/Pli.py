@@ -5,6 +5,7 @@ Created on Tue Oct 22 21:40:22 2019
 @author: telmar
 """
 
+
 from CompareCarteJeu import compareCarteJeu
 from PliIA import pliIA
 from PliHumain import pliHumain
@@ -18,6 +19,7 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, couleur_atout, j
     gagnant = 4 # Désigne le gagnant du pli actuel, initialisé à 4 au début
     joues = 0 # Nombre de joueurs ayant déjà joué au cours du pli
     while joues < 4:
+
         if joueur[(gagnant_prec + joues) % 4][1] == "Humain": # Si le joueur est un humain
             if (gagnant_prec + joues) % 4 == 0:
                 jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, 0)

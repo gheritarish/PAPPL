@@ -6,8 +6,8 @@ Created on Fri Nov 22 17:12:25 2019
 """
 from CartesJouables import cartesJouables
 from CompareCarteJeu import compareCarteJeu
-from CalculPoint import calculPoint
-from UpdateScore import updateScore
+from CalculPointMinimax import calculPointMinimax
+from UpdateScoreMinimax import updateScoreMinimax
 """
 Cette fonction sera appelé à la fin pour finir les tours de jeux pour chaque appel récurssif de l'IA 
 paramètre:
@@ -28,8 +28,8 @@ paramètre:
 def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,positionIA,poids,preneur):
     if len(jeu1)==0: #condition d'arret, on est au dernier pli et la derniere carte est jouée
         if positionIA in [0,2]: # ATTENTION : on ne connait pas encore gagnant_der           
-            points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
-            points_1,points_2 = updateScore(0, 0, points1, points2, preneur)
+            points1, points2 = calculPointMinimax(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
+            points_1,points_2 = updateScoreMinimax(0, 0, points1, points2, preneur)
 
                 
             if rebelote in [0, 2]: # On définit un poids égal au score de l'équipe qu'elle fait en jouant ainsi - le nombre de points nécessaires pour remporter le contrat
@@ -38,8 +38,8 @@ def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,reb
                 poids =poids +  points_1 - 81
             return poids
         else:
-            points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
-            points_1,points_2 = updateScore(0, 0, points1, points2, preneur)
+            points1, points2 = calculPointMinimax(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
+            points_1,points_2 = updateScoreMinimax(0, 0, points1, points2, preneur)
  
                 
             if rebelote in [1, 3]:
@@ -49,9 +49,9 @@ def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,reb
             return poids
     elif ((num_pli==3) and (len(jeu1)==5)) or ((num_pli==3) and (len(jeu1)==4)) or ((num_pli==3) and (len(jeu1)==3)) :
         if positionIA in [0,2]: # ATTENTION : on ne connait pas encore gagnant_der           
-            points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
+            points1, points2 = calculPointMinimax(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
             point_intermediare = 152 - points1 - points2
-            points_1,points_2 = updateScore(0, 0, points1 + point_intermediare//2, points2+ point_intermediare//2, preneur)
+            points_1,points_2 = updateScoreMinimax(0, 0, points1 + point_intermediare//2, points2+ point_intermediare//2, preneur)
             
                 
             if rebelote in [0, 2]: # On définit un poids égal au score de l'équipe qu'elle fait en jouant ainsi - le nombre de points nécessaires pour remporter le contrat
@@ -60,9 +60,9 @@ def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,reb
                 poids =poids +  points_1 - 81
             return poids
         else:
-            points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
+            points1, points2 = calculPointMinimax(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
             point_intermediare = 152 - points1 - points2
-            points_1,points_2 = updateScore(0, 0, points1+ point_intermediare//2, points2+ point_intermediare//2, preneur)
+            points_1,points_2 = updateScoreMinimax(0, 0, points1+ point_intermediare//2, points2+ point_intermediare//2, preneur)
  
                 
             if rebelote in [1, 3]:

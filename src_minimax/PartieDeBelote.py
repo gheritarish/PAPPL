@@ -151,7 +151,6 @@ def partieDeBelote():
             else :
                 p1, p2, equipe_belote = calculPoint(plis_equipe2, plis_equipe1, gagnant, atout, belote)
             if joueur[preneur] in equipe_1 : 
-                
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 1, equipe_belote, score_reporte)
             else : 
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 2, equipe_belote, score_reporte)

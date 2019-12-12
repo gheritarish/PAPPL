@@ -10,8 +10,8 @@ import random as rd
 def encherePremierTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
     """Renvoie une liste de deux éléments avec le joueur qui a pris (entre 0 et 3) et la couleur de l'atout. Renvoie une liste d'un seul élément si personne n'a pris"""
     print("premier tour d'enchere")
-    for i in range(4):
-        if joueur[i][1] != "IA":
+    for i in range(4): # Pour chacun des joueurs
+        if joueur[i][1] != "IA": # Si le joueur est humain
             print("c\'est au tour de: "+joueur[i])
             print('votre jeu')
             if i == 0:
@@ -27,7 +27,7 @@ def encherePremierTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
             
             if prise == "y":
                 return [i, carte[1]]
-        else:
+        else: # Si le joueur est une IA
             prise = rd.randint(1,2)
             if prise == 1:
                 return [i, carte[1]]
