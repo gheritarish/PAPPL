@@ -215,14 +215,14 @@ def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,
         else :
             carte_meneuse3=carte_meneuse
             gagnant3=meneur
-            if cartes_pli[-1][1]==couleur_atout and cartes_pli[-1][0] in ["Dame", "Roi"] and belote==4:
-                belote3=2
-            else :
-                belote3=belote
-            if cartes_pli[-1][1]==couleur_atout and cartes_pli[-1][0] in ["Dame", "Roi"] and belote==2:
-                rebelote3 = 2
-            else:
-                rebelote3 = rebelote
+        if cartes_pli[-1][1]==couleur_atout and cartes_pli[-1][0] in ["Dame", "Roi"] and belote==4:
+            belote3=2
+        else :
+            belote3=belote
+        if cartes_pli[-1][1]==couleur_atout and cartes_pli[-1][0] in ["Dame", "Roi"] and belote==2:
+            rebelote3 = 2
+        else:
+            rebelote3 = rebelote
         for carte4 in cartesJouables(jeu4, cartes_pli, couleur_atout, carte_meneuse3):
             cartes_pli.append(carte4)
             if compareCarteJeu(carte_meneuse3, cartes_pli[-1], couleur_atout)==-1:
@@ -235,11 +235,11 @@ def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,
             j3.remove(cartes_pli[2])
             j4=jeu4[:]
             j4.remove(cartes_pli[3])                
-            if cartes_pli[-1][1]==couleur_atout and cartes_pli[-1][0] in ["Dame", "Roi"] and belote3==4:
+            if cartes_pli[-1][1]==couleur_atout and (cartes_pli[-1][0] in ["Dame", "Roi"]) and belote3==4:
                 belote4=3
             else :
                 belote4=belote3
-            if cartes_pli[-1][1]==couleur_atout and cartes_pli[-1][0] in ["Dame", "Roi"] and belote3==3:
+            if cartes_pli[-1][1]==couleur_atout and (cartes_pli[-1][0] in ["Dame", "Roi"]) and belote3==3:
                 rebelote4 = 3
             else:
                 rebelote4 = rebelote3                
@@ -304,5 +304,5 @@ def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,
             plis_equipe2.append(cartes_pli)
             poid = jeuDeLaCarteMinimax(j4,jeu1,jeu2,jeu3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2)
             plis_equipe2.remove(cartes_pli)
-            
+        cartes_pli.pop(-1)
     return poid

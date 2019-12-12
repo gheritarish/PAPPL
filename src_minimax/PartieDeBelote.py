@@ -126,7 +126,7 @@ def partieDeBelote():
             jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte,joueur)
             print("le preneur est: " + joueur[preneur][0])
             plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur,difficulte,preneur)
-            if joueur[0][0] in equipe_1 : 
+            if joueur[0] in equipe_1 : 
                 p1, p2, equipe_belote = calculPoint(plis_equipe1, plis_equipe2, gagnant, atout, belote)
             else :
                 p1, p2, equipe_belote = calculPoint(plis_equipe2, plis_equipe1, gagnant, atout, belote)
@@ -146,11 +146,12 @@ def partieDeBelote():
             jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte, joueur)
             print("le preneur est: " + joueur[preneur][0])
             plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout, joueur,difficulte,preneur)
-            if joueur[0][0] in equipe_1 : 
+            if joueur[0] in equipe_1 : 
                 p1, p2, equipe_belote = calculPoint(plis_equipe1, plis_equipe2, gagnant, atout, belote)
             else :
                 p1, p2, equipe_belote = calculPoint(plis_equipe2, plis_equipe1, gagnant, atout, belote)
             if joueur[preneur] in equipe_1 : 
+                
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 1, equipe_belote, score_reporte)
             else : 
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 2, equipe_belote, score_reporte)

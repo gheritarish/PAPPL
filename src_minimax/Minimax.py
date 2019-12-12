@@ -9,7 +9,7 @@ from SuppressionCartes import suppressionCartes
 from RedistributionIA import redistributionIA
 import numpy as np
 from JeuDeLaCarteMinimaxInitialise import jeuDeLaCarteMinimaxInitialise
-
+from CreationPaquetDeCartes import creationPaquetDeCartes
 '''
 fonction à appelé pour avoir la liste des poids des cartes de l'IA
 cartesIA = liste des cartes de notre IA
@@ -26,10 +26,11 @@ plis equipe2 = liste des plis de l'equipe 2
 num_pli = numero du pli precedent
 preneur = equipe qui a prise en debut de partie (vaut 1 ou 2)
 '''
-def minimax(cartesIA, paquet,couleur_atout,carte_meneuse,meneur, cartes_pli,difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,preneur):
+def minimax(cartesIA, paquet,couleur_atout,carte_meneuse,meneur, cartes_pli,difficulte,belote,rebelote,plis_equipe1,plis_equipe2,preneur):
     cartes_possibles=cartesJouables(cartesIA, cartes_pli, couleur_atout, carte_meneuse) # on recupère les cartes jouables
     cartesAutreJoueur=suppressionCartes(suppressionCartes(paquet,cartes_pli), cartesIA) #cartes à redistribuer
     poids=np.zeros(len(cartes_possibles)) #matrice des poids de chaque cartes
+    num_pli=0
     if len(cartes_pli)==0:
         positionIA=0
         for i in range(difficulte):
@@ -57,19 +58,42 @@ def minimax(cartesIA, paquet,couleur_atout,carte_meneuse,meneur, cartes_pli,diff
     
     return poids
         
+'''
+cartesIA = [['Roi','pique'],[7, 'trèfle'], [1, 'coeur'],[9, 'pique'],[1, 'trèfle']]
 
-cartesIA = [['Roi','pique'],[7, 'trèfle'], [1, 'coeur']]
-paquet=[['Roi','pique'],[7, 'trèfle'], [1, 'coeur'],['Valet', 'pique'],['Dame', 'pique'],['Roi', 'coeur'],['Valet', 'trèfle'],['Roi', 'trèfle'],[10, 'trèfle'],[10, 'carreau'],[7, 'carreau'],['Roi', 'carreau']]
 couleur_atout='pique'
 meneur=1
-cartes_pli=[['Valet', 'pique'],['Dame', 'pique'],['Roi', 'coeur']]
-carte_meneuse=['Valet', 'pique']
-difficulte=10
+cartes_pli=[]
+carte_meneuse=[]
+difficulte=1000
 belote=4
 rebelote=4
-plis_equipe1=[[[1, 'pique'],[7, 'pique'], [8, 'pique'], [9, 'pique']], [[10, 'pique'],[1, 'trèfle'],[8, 'trèfle'],['Dame', 'trèfle']],[[1, 'carreau'],[9, 'carreau'],['Dame', 'carreau'],['Valet', 'carreau']]]
+plis_equipe1=[ [[1, 'carreau'],[9, 'carreau'],['Dame', 'carreau'],['Valet', 'carreau']]]
 plis_equipe2=[[[7, 'coeur'], [8, 'coeur'], [9, 'coeur'], [10, 'coeur']], [['Valet', 'coeur'], ['Dame', 'coeur'],[9, 'trèfle'],[8, 'carreau']]]
-num_pli=5
+paquet=creationPaquetDeCartes()
+for k in range (len(plis_equipe1)):
+    paquet = suppressionCartes(paquet,plis_equipe1[k])
+for k in range (len(plis_equipe2)):
+    paquet = suppressionCartes(paquet,plis_equipe2[k])
+num_pli=3
 preneur=1
-        
+
+'''
+cartesIA = [[1, 'coeur'],['Dame','trèfle'],[8,'coeur'],[9,'pique'],[10,'coeur'],['Valet','pique']]
+couleur_atout='pique'
+meneur=1
+cartes_pli=[]
+carte_meneuse=[]
+difficulte=100
+belote=4
+rebelote=4
+plis_equipe1=[[['Roi','pique'],[1, 'carreau'],['Roi', 'coeur'],[9, 'coeur']],[[7, 'trèfle'],['Valet', 'carreau'],[9, 'carreau'],[1, 'trèfle']]]
+plis_equipe2=[]
+paquet=creationPaquetDeCartes()
+for k in range (len(plis_equipe1)):
+    paquet = suppressionCartes(paquet,plis_equipe1[k])
+for k in range (len(plis_equipe2)):
+    paquet = suppressionCartes(paquet,plis_equipe2[k])
+preneur=1
+#
     

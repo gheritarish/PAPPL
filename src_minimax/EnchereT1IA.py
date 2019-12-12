@@ -11,8 +11,8 @@ def encherePremierTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
     """Renvoie une liste de deux éléments avec le joueur qui a pris (entre 0 et 3) et la couleur de l'atout. Renvoie une liste d'un seul élément si personne n'a pris"""
     print("premier tour d'enchere")
     for i in range(4):
-        if joueur[i][1] != "IA":
-            print("c\'est au tour de: "+joueur[i])
+        if joueur[i][1] != "IAaleatoire" and joueur[i][1] != "IAminimax":
+            print("c\'est au tour de: "+joueur[i][0])
             print('votre jeu')
             if i == 0:
                 print(jeu1, "\n")
@@ -23,7 +23,7 @@ def encherePremierTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
             elif i == 3:
                 print(jeu4, "\n")
             print(carte)
-            res = input("Voulez-vous prendre ? (y/n)")
+            prise = input("Voulez-vous prendre ? (y/n)")
             
             if prise == "y": # Si quelqu'un prend, on renvoie le joueur et l'atout
                 return [i, carte[1]]

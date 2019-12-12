@@ -12,8 +12,8 @@ def enchereDeuxiemeTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
     print("second tour d'enchere")
     for i in range(4):
         couleur = carte[1]
-        if joueur[i][1] != "IA":
-            print("c\'est au tour de: "+ joueur[i])
+        if joueur[i][1] != "IAaleatoire" and joueur[i][1] != "IAminimax":
+            print("c\'est au tour de: "+ joueur[i][0])
             if i == 0:
                 print(jeu1, "\n")
             elif i == 1:

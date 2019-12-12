@@ -5,7 +5,7 @@ Created on Wed Oct 23 15:19:35
 @author: telmar
 """
 
-def calculPoint(plis_eq1, plis_eq2, gagnant_der, atout, belote):
+def calculPointMinimax(plis_eq1, plis_eq2, gagnant_der, atout, belote):
     points_eq1 = 0
     points_eq2 = 0
     if plis_eq1 == []:

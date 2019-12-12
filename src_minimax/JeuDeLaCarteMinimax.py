@@ -26,7 +26,7 @@ paramètre:
 
 #jeu1, jeu2, jeu3 , jeu4 doivent être ordonné à l'appel de la fonction
 def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,positionIA,poids,preneur):
-    if num_pli==8: #condition d'arret, on est au dernier pli et la derniere carte est jouée
+    if len(jeu1)==0: #condition d'arret, on est au dernier pli et la derniere carte est jouée
         if positionIA in [0,2]: # ATTENTION : on ne connait pas encore gagnant_der           
             points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
             points_1,points_2 = updateScore(0, 0, points1, points2, preneur)
@@ -47,6 +47,29 @@ def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,reb
             else:
                 poids =poids +  points_2 - 81
             return poids
+    elif ((num_pli==3) and (len(jeu1)==5)) or ((num_pli==3) and (len(jeu1)==4)) or ((num_pli==3) and (len(jeu1)==3)) :
+        if positionIA in [0,2]: # ATTENTION : on ne connait pas encore gagnant_der           
+            points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
+            point_intermediare = 152 - points1 - points2
+            points_1,points_2 = updateScore(0, 0, points1 + point_intermediare//2, points2+ point_intermediare//2, preneur)
+            
+                
+            if rebelote in [0, 2]: # On définit un poids égal au score de l'équipe qu'elle fait en jouant ainsi - le nombre de points nécessaires pour remporter le contrat
+                poids = poids + points_1 - 91
+            else:
+                poids =poids +  points_1 - 81
+            return poids
+        else:
+            points1, points2 = calculPoint(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
+            point_intermediare = 152 - points1 - points2
+            points_1,points_2 = updateScore(0, 0, points1+ point_intermediare//2, points2+ point_intermediare//2, preneur)
+ 
+                
+            if rebelote in [1, 3]:
+                poids = poids +  points_2 - 91
+            else:
+                poids =poids +  points_2 - 81
+            return poids        
     else : 
         cartes_pli=[]
         carte_meneuse0=0
