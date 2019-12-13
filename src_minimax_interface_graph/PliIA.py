@@ -15,10 +15,10 @@ def pliIA(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_p
     cartes_possibles = cartesJouables(jeu, cartes_pli, couleur_atout, carte_meneuse) # On fait la liste des indices des cartes que l'IA peut jouer
     jouer = rd.randint(1, len(cartes_possibles)) # On choisit un indice de cartes au hasard parmi ces indices
     card = cartes_possibles[jouer-1] # L'indice définit la carte
-    cartes_pli.append(jeu[card])
-    if jeu[card][1] == couleur_atout and jeu[card][0] in ["Dame", "Roi"] and belote == 4: # Si c'est une situation de belote, l'IA la déclare immédiatement
+    cartes_pli.append(card)
+    if card[1] == couleur_atout and card[0] in ["Dame", "Roi"] and belote == 4: # Si c'est une situation de belote, l'IA la déclare immédiatement
         belote = num_joueur
-    elif jeu[card][1] == couleur_atout and jeu[card][0] in ["Dame", "Roi"] and belote == num_joueur: # Si c'est une situation de rebelote, l'IA la déclare immédiatement
+    elif card[1] == couleur_atout and card[0] in ["Dame", "Roi"] and belote == num_joueur: # Si c'est une situation de rebelote, l'IA la déclare immédiatement
         rebelote = num_joueur
-    jeu.pop(card) # On enlève la carte jouée du jeu de l'IA
+    jeu.remove(card) # On enlève la carte jouée du jeu de l'IA
     return jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse
