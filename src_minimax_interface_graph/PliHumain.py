@@ -27,6 +27,6 @@ def pliHumain(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, n
     if belote == "y": # Update des variables belote et rebelote
         belote = num_joueur
     if rebelote == "y":
-        rebelote == num_joueur
+        rebelote = num_joueur
     jeu.pop(choix-1) # On enlève la carte qui vient d'être jouée au jeu du joueur
     return jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse
