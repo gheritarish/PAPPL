@@ -14,7 +14,7 @@ def affichageOuiNon(string,liste):
     for i in range(len(liste)):
         choix = Radiobutton(fenetre, text=liste[i], variable=var_choix, value=liste[i])
         choix.pack()  
-    Bouton1 = Button(fenetre, text = 'Quitter', command = fenetre.destroy)
+    Bouton1 = Button(fenetre, text = 'OK', command = fenetre.destroy)
     Bouton1.pack()
     fenetre.mainloop() 
     return(var_choix.get())

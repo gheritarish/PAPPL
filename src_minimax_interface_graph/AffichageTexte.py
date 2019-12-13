@@ -10,6 +10,6 @@ def affichageTexte(string):
     fenetre = Tk()
     champ_label = Label(fenetre, text=string)
     champ_label.pack()
-    Bouton1 = Button(fenetre, text = 'Quitter', command = fenetre.destroy)
+    Bouton1 = Button(fenetre, text = 'OK', command = fenetre.destroy)
     Bouton1.pack()
     fenetre.mainloop() 

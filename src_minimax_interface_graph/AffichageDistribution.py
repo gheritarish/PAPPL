@@ -34,7 +34,7 @@ def affichageDistribution(jeu,carte,joueur,tour):
     choix.pack() 
     choix = Radiobutton(Mafenetre, text="no", variable=var_choix, value="n")
     choix.pack()    
-    Bouton1 = Button(Mafenetre, text = 'Quitter', command = Mafenetre.destroy)
+    Bouton1 = Button(Mafenetre, text = 'OK', command = Mafenetre.destroy)
     Bouton1.pack()
     Mafenetre.mainloop() 
     return(var_choix.get())

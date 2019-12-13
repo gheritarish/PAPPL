@@ -13,7 +13,7 @@ def affichageTexteInput(string):
     var_texte = StringVar()
     ligne_texte = Entry(fenetre, textvariable=var_texte, width=50)
     ligne_texte.pack() 
-    Bouton1 = Button(fenetre, text = 'Quitter', command = fenetre.destroy)
+    Bouton1 = Button(fenetre, text = 'OK', command = fenetre.destroy)
     Bouton1.pack()
     fenetre.mainloop()
     return var_texte.get()

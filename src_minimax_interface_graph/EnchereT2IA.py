@@ -18,13 +18,13 @@ def enchereDeuxiemeTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
         if joueur[i][1] != "IAaleatoire" and joueur[i][1] != "IAminimax":
             affichageTexte("c\'est au tour de: "+ joueur[i][0])
             if i == 0:
-                prise =  affichageDistribution(jeu1,carte,joueur[i][0],1)
+                prise =  affichageDistribution(jeu1,carte,joueur[i][0],2)
             elif i == 1:
-                prise =  affichageDistribution(jeu2,carte,joueur[i][0],1)
+                prise =  affichageDistribution(jeu2,carte,joueur[i][0],2)
             elif i == 2:
-                prise =  affichageDistribution(jeu3,carte,joueur[i][0],1)
+                prise =  affichageDistribution(jeu3,carte,joueur[i][0],2)
             elif i == 3:
-                prise =  affichageDistribution(jeu4,carte,joueur[i][0],1)
+                prise =  affichageDistribution(jeu4,carte,joueur[i][0],2)
             if prise == "y": # Si l'IA prend, elle choisit quelle couleur sera l'atout
                 if couleur == "pique":
                     coul_choisie = int(affichageOuiNon("Choisissez le numéro de la couleur : 1. Trèfle 2. Carreau 3. Coeur",["1","2","3"]))
