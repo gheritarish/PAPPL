@@ -113,8 +113,8 @@ def partieDeBelote():
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 1, equipe_belote, score_reporte)
             else : 
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 2, equipe_belote, score_reporte)
-            affichageTexte("le score de l\' équipe 1 est: " , points_1)
-            affichageTexte("le score de l\' équipe 2 est: ", points_2)
+            affichageTexte("le score de l\' équipe 1 est: " + str(points_1))
+            affichageTexte("le score de l\' équipe 2 est: " + str(points_2))
             joueur= ordreJoueur(joueur[0][0],joueur)
     if type_de_partie=="tours": # Dans le cas d'une partie au nombre de donnes
         k = 0
@@ -132,8 +132,8 @@ def partieDeBelote():
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 1, equipe_belote, score_reporte)
             else : 
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 2, equipe_belote, score_reporte)
-            affichageTexte("le score de l\' équipe 1 est: ", points_1)
-            affichageTexte("le score de l\' équipe 2 est: ", points_2)
+            affichageTexte("le score de l\' équipe 1 est: " + str(points_1))
+            affichageTexte("le score de l\' équipe 2 est: " + str(points_2))
             joueur= ordreJoueur(joueur[0][0],joueur)
             k += 1
     
