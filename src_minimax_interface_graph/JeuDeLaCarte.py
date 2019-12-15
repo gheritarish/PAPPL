@@ -31,4 +31,4 @@ def jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur,difficulte,preneur):
         cartes_restantes = suppressionCartes(cartes_restantes, plis)
         affichagePli(plis,j,joueur[gagnant][0])
 
-    return plis_equipe1, plis_equipe2, gagnant, rebelote # On renvoie les plis des deux équipes, le gagnant du dernier pli et le joueur qui a fait la rebelote (il a nécessairement fait une belote aussi
+    return plis_equipe1, plis_equipe2, gagnant, rebelote # On renvoie les plis des deux équipes, le gagnant du dernier pli et le joueur qui a fait la rebelote (il a nécessairement fait une belote aussi)
