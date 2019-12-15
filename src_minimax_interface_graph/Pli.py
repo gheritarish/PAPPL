@@ -21,15 +21,15 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, couleur_atout, j
     while joues < 4:
 
         if joueur[(gagnant_prec + joues) % 4][1] == "Humain": # Si le joueur est un humain
-            jo=ordreJoueur(joueur[gagnant_prec-1][0], joueur)
+    
             if (gagnant_prec + joues) % 4 == 0:
-                jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, (0-gagnant_prec)%4,jo,(gagnant-gagnant_prec)%4)
+                jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, 0,joueur,gagnant,gagnant_prec)
             elif (gagnant_prec + joues) % 4 == 1:
-                jeu2, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu2, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, (1-gagnant_prec)%4,jo,(gagnant-gagnant_prec)%4)
+                jeu2, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu2, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, 1,joueur,gagnant,gagnant_prec)
             elif (gagnant_prec + joues) % 4 == 2:
-                jeu3, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu3, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli,(2-gagnant_prec)%4,jo,(gagnant-gagnant_prec)%4)
+                jeu3, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu3, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli,2,joueur,gagnant,gagnant_prec)
             elif (gagnant_prec + joues) % 4 == 3:
-                jeu4, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu4, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, (3-gagnant_prec)%4,jo,(gagnant-gagnant_prec)%4)
+                jeu4, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu4, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, 3,joueur,gagnant,gagnant_prec)
         elif joueur[(gagnant_prec + joues) % 4][1] == "IAaleatoire": # Si le joueur est une IA aleatoire
             if (gagnant_prec + joues) % 4 == 0:
                 jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliIA(jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, 0)

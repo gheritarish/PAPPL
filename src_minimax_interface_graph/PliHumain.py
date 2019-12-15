@@ -9,12 +9,19 @@ from CompareCarteJeu import compareCarteJeu
 from AfficheJeu import affichageJeu
 from AffichageTexte import affichageTexte
 from AffichageOuiNon import affichageOuiNon
+from OrdreJoueur import ordreJoueur
 
-def pliHumain(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, num_joueur,joueurs,gagnant):
+def pliHumain(jeu, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, num_joueur,joueurs,gagnant,gagnant_prec):
     """Fonction qui permet à un humain de jouer. Prend en argument son jeu, les cartes actuelles du pli, le joueur qui a fait une belote et une rebelote, la carte meneuse, le numéro du pli et le numéro du joueur"""
+    n_joueur=(num_joueur-gagnant_prec)%4
+    jo=ordreJoueur(joueurs[gagnant_prec-1][0], joueurs)
+    if gagnant ==4 :
+        gagn = 4
+    else :
+        gagn= (gagnant-gagnant_prec)%4
     autorise = False
     while not autorise: # Tant que la carte que l'on veut jouer n'est pas autorisée par les règles
-        choix = int(affichageJeu(cartes_pli,jeu,gagnant,couleur_atout,joueurs[num_joueur][0],joueurs))
+        choix = int(affichageJeu(cartes_pli,jeu,gagn,couleur_atout,jo[n_joueur][0],jo))
         if regle(jeu, cartes_pli, jeu[choix-1], couleur_atout, carte_meneuse):
             autorise = True
         else:
