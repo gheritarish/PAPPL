@@ -103,6 +103,8 @@ def partieDeBelote():
             affichageTexte("le joueur qui commence est :" + joueur[0][0])
             paquet_de_carte = melangeCarte(paquet_de_carte)
             jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte,joueur)
+            while jeu1 == "On redistribue":
+                jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte,joueur)
             affichageTexte("le preneur est: " + joueur[preneur][0])
             plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur,difficulte,preneur)
             if joueur[0] in equipe_1 : 
@@ -122,6 +124,8 @@ def partieDeBelote():
             affichageTexte("le joueur qui commence est :" + joueur[0][0])
             paquet_de_carte = melangeCarte(paquet_de_carte)
             jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte, joueur)
+            while jeu1 == "On redistribue":
+                jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte,joueur)
             affichageTexte("le preneur est: " + joueur[preneur][0])
             plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout, joueur,difficulte,preneur)
             if joueur[0] in equipe_1 : 

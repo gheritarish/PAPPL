@@ -37,7 +37,7 @@ def affichageJeu(pli,jeu,meneur,couleurAtout,joueur,joueurs):
     L=[]
     debut = 175+(8-len(jeu))*75
     if meneur != 4 :
-        Canevas.create_text(700, 275,text="la couleur d'atout est "+couleurAtout+ ", le meneur est "+joueurs[meneur][0] +" et votre jeu est:")
+        Canevas.create_text(700, 275,text="la couleur d'atout est "+couleurAtout+ ", le meneur est "+ joueurs[meneur][0] +" et votre jeu est:")
     else :
         Canevas.create_text(700, 275,text="la couleur d'atout est "+couleurAtout+ " et votre jeu est:")
     Canevas.pack()  

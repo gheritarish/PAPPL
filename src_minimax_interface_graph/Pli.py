@@ -76,6 +76,7 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, couleur_atout, j
                     jeu4, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliIAminimax(jeu4, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse,  3,difficulte,(gagnant-gagnant_prec)%4,(preneur-1)%4,plis_equipe2,plis_equipe1)           
                 elif len(cartes_pli)==3:
                     jeu4, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliIAminimax(jeu4, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse,  3,difficulte,(gagnant-gagnant_prec)%4,preneur,plis_equipe1,plis_equipe2)
+        
         if carte_meneuse == 0: # S'il n'y a pas encore de carte meneuse, c'est la seule carte qui a été jouée
             carte_meneuse = cartes_pli[-1]
             gagnant=(gagnant_prec + joues) % 4

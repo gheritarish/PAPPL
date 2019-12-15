@@ -24,7 +24,7 @@ def distribution(paquet,joueur):
     carte_retournee=paquet[20]
     resultat=enchere(carte_1,carte_2,carte_3,carte_4,carte_retournee,joueur)
     if resultat=="On redistribue":
-        return "On redistribue"
+        return ("On redistribue", 0, 0, 0, 0, 0)
     else :
         preneur=resultat[0]
         if preneur ==0 :
