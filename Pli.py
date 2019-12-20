@@ -11,6 +11,7 @@ from PliIA import pliIA
 from PliHumain import pliHumain
 from OrdreJoueur import ordreJoueur
 from PliIAminimax import pliIAminimax
+from AffichageTexte import affichageTexte
 
 def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, couleur_atout, joueur, num_pli,difficulte,preneur,plis_equipe1,plis_equipe2):
     """Fonction qui permet de gérer un pli. Prend en argument les jeux de chaque joueur, le joueur qui commence, le joueur qui a fait une belote, une rebelote, la couleur de l'atout, la liste des joueurs et le numéro du pli dans la donne"""
@@ -21,7 +22,7 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, couleur_atout, j
     while joues < 4:
 
         if joueur[(gagnant_prec + joues) % 4][1] == "Humain": # Si le joueur est un humain
-    
+            affichageTexte("c'est au tour de " +joueur[(gagnant_prec + joues) % 4][0] )
             if (gagnant_prec + joues) % 4 == 0:
                 jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse = pliHumain(jeu1, cartes_pli, belote, rebelote, couleur_atout, carte_meneuse, num_pli, 0,joueur,gagnant,gagnant_prec)
             elif (gagnant_prec + joues) % 4 == 1:
