@@ -86,8 +86,6 @@ def pli(jeu1, jeu2, jeu3, jeu4, gagnant_prec, belote, rebelote, couleur_atout, j
             if gain == -1:
                 carte_meneuse = cartes_pli[-1]
                 gagnant = (gagnant_prec + joues) % 4
-            elif gain == 1:
-                carte_meneuse = carte_meneuse
         
         joues += 1
 

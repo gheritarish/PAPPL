@@ -25,6 +25,6 @@ def encherePremierTourIA(jeu1, jeu2, jeu3, jeu4, carte,joueur):
         print(carte)
         res = input("Voulez-vous prendre ? (y/n)")
         
-        if prise == "y": # Si quelqu'un prend, on renvoie le joueur et la couleur de l'atout
+        if res == "y": # Si quelqu'un prend, on renvoie le joueur et la couleur de l'atout
             return [i, carte[1]]
     return ["Personne n'a pris"]
