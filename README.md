@@ -9,3 +9,8 @@ This script opens the server and listen until a message is received. It prints o
 
 ## To run the script
 On a terminal, run `python receive.py`, then open another terminal window to run `python send.py`. It will work with both `python2.7` and `python3` but the result will be better with `python3`.
+
+### Sources
+https://docs.python.org/2/library/socket.html
+https://www.techbeamers.com/python-tutorial-write-tcp-server/
+https://wiki.python.org/moin/TcpCommunication
