@@ -13,6 +13,6 @@ print ("Connection address:", addr)
 while 1:
     data = conn.recv(BUFFER_SIZE)
     if not data: break
-    print ("Received data:", data)
+    print ("Received data:", data.decode())
     conn.send(data)
 conn.close()
