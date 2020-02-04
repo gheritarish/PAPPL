@@ -1,4 +1,5 @@
 import socketserver
+from Script import script
 
 class Handler_TCPServer(socketserver.BaseRequestHandler):
     """The TCP Server class"""
@@ -6,9 +7,9 @@ class Handler_TCPServer(socketserver.BaseRequestHandler):
     def handle(self):
         self.data = self.request.recv(1024).strip()
         print(format(self.client_address[0]))
-        print(self.data)
+        print(self.data.decode())
 
-        answer = "5 * 5 = " + script()
+        answer = "5 * 5 = " + str(script())
         self.request.sendall(answer.encode())
 
 if __name__ == "__main__":
