@@ -1,9 +1,7 @@
-import numpy as np
-
 def square(a):
     return a*a
 
 def script():
-    x = np.linspace(0,5,20)
+    x = 5
     y = square(x)
     return y
