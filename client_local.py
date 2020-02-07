@@ -5,7 +5,7 @@ port = 5005
 
 host_connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host_connection.connect((host, port))
-print("Connection established {}".format(port))
+print("Connection established on port: {}".format(port))
 
 to_send = ""
 while to_send != "end":
