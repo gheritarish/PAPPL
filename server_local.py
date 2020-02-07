@@ -1,4 +1,5 @@
 import socket
+from Script import square
 
 host = ''
 port = 5005
@@ -9,11 +10,13 @@ tcp_socket.listen(5)
 
 connection, info = tcp_socket.accept()
 
-received = b""
-while received.decode() != "end":
+received = connection.recv(1024)
+while received != b"end":
+    a = int(received.decode())
+    print(a)
+    message = str(a) + " * " + str(a) + " = " + str(square(a))
+    connection.send(message.encode())
     received = connection.recv(1024)
-    print(received.decode())
-    connection.send("Message received".encode())
 
 print("Closing host...")
 connection.close()

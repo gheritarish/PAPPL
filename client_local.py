@@ -9,7 +9,7 @@ print("Connection established on port: {}".format(port))
 
 to_send = ""
 while to_send != "end":
-    to_send = input("> ")
+    to_send = input("Enter n to get n*n or 'end' to close the connection:\n> ")
     host_connection.send(to_send.encode())
     received = host_connection.recv(1024)
     print(received.decode())
