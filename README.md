@@ -17,6 +17,9 @@ To run the upgrade of this script, run `python server.py` then open another term
 
 ### Sources
 https://docs.python.org/2/library/socket.html
+
 https://www.techbeamers.com/python-tutorial-write-tcp-server/
+
 https://wiki.python.org/moin/TcpCommunication
+
 https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python/234698-gerez-les-reseaux
