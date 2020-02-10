@@ -13,7 +13,7 @@ connection, info = tcp_socket.accept()
 received = connection.recv(1024)
 script = b"None"
 while received != b"end":
-    if script == b"None":
+    if received.decode() == "script":
         connection.send("Which script do you want to use?\n1. Get the square of a number\n2. Move directory".encode())
         number = connection.recv(1024)
         b = int(number.decode())
@@ -21,18 +21,21 @@ while received != b"end":
             script = "Square"
         else:
             script = "Dir"
-    elif script == "Square":
-        a = int(received.decode())
-        print(a)
-        message = str(a) + " * " + str(a) + " = " + str(square(a))
-        connection.send(message.encode())
-        received = connection.recv(1024)
-    elif script == "Dir":
-        message = "Directory = " + vm_dir(received.decode())
-        connection.send(message.encode())
-        received = connection.recv(1024)
-
-    script = b"None"
+        
+        if script == "Square":
+            received = connection.recv(1024)
+            a = int(received.decode())
+            print(a)
+            message = str(a) + " * " + str(a) + " = " + str(square(a))
+            connection.send(message.encode())
+            received = connection.recv(1024)
+        elif script == "Dir":
+            received = connection.recv(1024)
+            message = "Directory = " + vm_dir(received.decode())
+            connection.send(message.encode())
+            received = connection.recv(1024)
+    elif received.decode() == "end":
+        break
 
 print("Closing host...")
 connection.close()
