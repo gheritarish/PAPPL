@@ -5,7 +5,7 @@ def square(a):
 
 def mv_dir(name):
     # Faire des tests sur l'entrée, attention aux guillemets, | et ;
-    os.system("cd " + name_dir + "; ls")
+    os.system("cd " + name + "; ls")
     return str(os.system("ls"))
 
 def script():
