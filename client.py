@@ -22,7 +22,7 @@ while to_send != "end":
             received = host_connection.recv(1024)
             print(received.decode())
         elif int(number_to_send) == 2:
-            to_send = input("Type the name of a directory")
+            to_send = input("Type the name of a directory\n> ")
             host_connection.send(to_send.encode())
             received = host_connection.recv(1024)
             print(received.decode())

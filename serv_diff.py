@@ -1,5 +1,5 @@
 import socket
-from Script import square
+from Script import square, mv_dir
 
 host = ''
 port = 5005
@@ -13,15 +13,18 @@ connection, info = tcp_socket.accept()
 received = connection.recv(1024)
 script = b"None"
 while received != b"end":
+    print(received.decode())
     if received.decode() == "script":
         connection.send("Which script do you want to use?\n1. Get the square of a number\n2. Move directory".encode())
         number = connection.recv(1024)
         b = int(number.decode())
         if b == 1:
             script = "Square"
-        else:
+        elif b == 2:
             script = "Dir"
-        
+        else:
+            script = "Retour"
+
         if script == "Square":
             received = connection.recv(1024)
             a = int(received.decode())
@@ -31,8 +34,10 @@ while received != b"end":
             received = connection.recv(1024)
         elif script == "Dir":
             received = connection.recv(1024)
-            message = "Directory = " + vm_dir(received.decode())
+            message = "Directory = " + mv_dir(received.decode())
             connection.send(message.encode())
+            received = connection.recv(1024)
+        elif script == "Retour":
             received = connection.recv(1024)
     elif received.decode() == "end":
         break
