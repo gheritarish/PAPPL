@@ -1,12 +1,9 @@
-import os
-
 def square(a):
     return a*a
 
-def mv_dir(name):
-    # Faire des tests sur l'entrée, attention aux guillemets, | et ;
-    os.system("cd " + name + "; ls")
-    return str(os.system("ls"))
+def liste(l, k):
+    res = l.append(k)
+    return res
 
 def script():
     x = 5

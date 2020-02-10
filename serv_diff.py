@@ -1,5 +1,5 @@
 import socket
-from Script import square, mv_dir
+from Script import square, liste
 
 host = ''
 port = 5005
@@ -15,26 +15,32 @@ script = b"None"
 while received != b"end":
     print(received.decode())
     if received.decode() == "script":
-        connection.send("Which script do you want to use?\n1. Get the square of a number\n2. Move directory".encode())
+        connection.send("Which script do you want to use?\n1. Get the square of a number\n2. Play with a list".encode())
         number = connection.recv(1024)
         b = int(number.decode())
         if b == 1:
             script = "Square"
         elif b == 2:
-            script = "Dir"
+            script = "Liste"
         else:
             script = "Retour"
 
         if script == "Square":
             received = connection.recv(1024)
             a = int(received.decode())
-            print(a)
             message = str(a) + " * " + str(a) + " = " + str(square(a))
+            print(message)
             connection.send(message.encode())
             received = connection.recv(1024)
-        elif script == "Dir":
-            received = connection.recv(1024)
-            message = "Directory = " + mv_dir(received.decode())
+        elif script == "Liste":
+            list_length = int(connection.recv(1024).decode())
+            l = []
+            for i in range(list_length):
+                num_r = connection.recv(1024)
+                num = int(num_r.decode())
+                liste(l, num)
+            message = "The result: " + str(l)
+            print(message)
             connection.send(message.encode())
             received = connection.recv(1024)
         elif script == "Retour":
