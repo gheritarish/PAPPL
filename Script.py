@@ -1,8 +1,12 @@
 def square(a):
     return a*a
 
-def liste(l, k):
+def add_list(l, k):
     res = l.append(k)
+    return res
+
+def rem_list(l, k):
+    res = l.remove(k)
     return res
 
 def script():

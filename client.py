@@ -23,11 +23,24 @@ while to_send != "end":
             received = host_connection.recv(1024)
             print(received.decode())
         elif int(number_to_send) == 2:
-            to_send = input("Write down the length of the list:\n> ")
-            host_connection.send(to_send.encode())
-            for i in range(int(to_send)):
-                next_number = input("Next number of the list\n> ")
-                host_connection.send(next_number.encode())
+            current = host_connection.recv(1024)
+            print(current.decode())
+            
+            num = input("Do you want to:\n1. Add elements to the list\n2. Remove an element from the list\n> ")
+            host_connection.send(num.encode())
+            
+            if int(num) == 1:
+                to_send = input("Write down the length of the list:\n> ")
+                host_connection.send(to_send.encode())
+                for i in range(int(to_send)):
+                    next_number = input("Next number of the list\n> ")
+                    host_connection.send(next_number.encode())
+            elif int(num) == 2:
+                to_send = input("Write down the number you want to remove\n> ")
+                host_connection.send(to_send.encode())
+            else:
+                break
+
             received = host_connection.recv(1024)
             print(received.decode())
         

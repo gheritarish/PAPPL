@@ -1,5 +1,5 @@
 import socket
-from Script import square, liste
+from Script import square, add_list, rem_list
 
 host = ''
 port = 5005
@@ -12,6 +12,7 @@ connection, info = tcp_socket.accept()
 
 received = connection.recv(1024)
 script = b"None"
+l = []
 while received != b"end":
     print(received.decode())
     if received.decode() == "script":
@@ -33,12 +34,22 @@ while received != b"end":
             connection.send(message.encode())
             received = connection.recv(1024)
         elif script == "Liste":
-            list_length = int(connection.recv(1024).decode())
-            l = []
-            for i in range(list_length):
-                num_r = connection.recv(1024)
-                num = int(num_r.decode())
-                liste(l, num)
+            message = "The current list is: " + str(l)
+            connection.send(message.encode())
+            
+            to_do = int(connection.recv(1024).decode())
+            if to_do == 1:
+                list_length = int(connection.recv(1024).decode())
+                for i in range(list_length):
+                    num_r = connection.recv(1024)
+                    num = int(num_r.decode())
+                    add_list(l, num)
+            elif to_do == 2:
+                to_rem = int(connection.recv(1024).decode())
+                rem_list(l, to_rem)
+            else:
+                break
+
             message = "The result: " + str(l)
             print(message)
             connection.send(message.encode())
