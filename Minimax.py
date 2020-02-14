@@ -11,7 +11,7 @@ import numpy as np
 from JeuDeLaCarteMinimaxInitialise import jeuDeLaCarteMinimaxInitialise
 from CreationPaquetDeCartes import creationPaquetDeCartes
 '''
-fonction à appelé pour avoir la liste des poids des cartes de l'IA
+fonction à appeler pour avoir la liste des poids des cartes de l'IA
 cartesIA = liste des cartes de notre IA
 paquet = cartes qui n'ont pas été joué aux plis précédents
 couleur_atout = couleur de l'atout
@@ -29,7 +29,7 @@ preneur = equipe qui a prise en debut de partie (vaut 1 ou 2)
 def minimax(cartesIA, paquet,couleur_atout,carte_meneuse,meneur, cartes_pli,difficulte,belote,rebelote,plis_equipe1,plis_equipe2,preneur):
     cartes_possibles=cartesJouables(cartesIA, cartes_pli, couleur_atout, carte_meneuse) # on recupère les cartes jouables
     cartesAutreJoueur=suppressionCartes(suppressionCartes(paquet,cartes_pli), cartesIA) #cartes à redistribuer
-    poids=np.zeros(len(cartes_possibles)) #matrice des poids de chaque cartes
+    poids=np.zeros(len(cartes_possibles)) #matrice des poids de chaque carte
     num_pli=0
     if len(cartes_pli)==0:
         positionIA=0
