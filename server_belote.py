@@ -1,6 +1,8 @@
 import socket
 from Script import square, add_list, rem_list
 from PartieDeBelote import partieDeBelote
+from CreationPaquetDeCartes import creationPaquetDeCartes
+from MelangeCarte import melangeCarte
 
 host = ''
 port = 5005
@@ -14,24 +16,40 @@ connection, info = tcp_socket.accept()
 received = connection.recv(1024)
 while received != b"end":
     mode = str(received.decode())[0]
+    paquet_de_cartes = creationPaquetDeCartes()
+    paquet_de_cartes = melangeCarte(paquet_de_cartes)
+    equipe_1 = []
+    equipe_2 = []
     if mode == "p":
-        connection.send("Combien de points maximum ?")
+        connection.send("Combien de points maximum ?".encode())
         points_max = 0
         while points_max <= 0:
             pt_max = connection.recv(1024)
             try:
                 points_max = int(pt_max.decode())
             except:
-                connection.send("Vous n'avez pas entré un nombre")
+                connection.send("Vous n'avez pas entré un nombre".encode())
     elif mode == "t":
-        connection.send("Nombre de tours de jeu ?")
+        connection.send("Nombre de tours de jeu ?".encode())
         tours_max = 0
         while tours_max <= 0:
             tours = connection.recv(1024)
             try:
                 tours_max = int(tours.decode())
             except:
-                connection.send("Vous n'avez pas entré un nombre")
+                connection.send("Vous n'avez pas entré un nombre".encode())
+
+    connection.send("Premier joueur de l'équipe 1".encode())
+    joue = connection.recv(1024)
+    joueur = str(joue.decode())
+    connection.send("1. Humain\n2. IA déblie\n3. IA intelligente".encode())
+    type = connection.recv(1024)
+    race = 0
+    while race != 1 or race != 2 or race != 3:
+        try:
+            race = int(type.decode())
+        except:
+            connection.send("Vous n'avez pas entré un nombre".encode())
 
     
     print(received.decode())
