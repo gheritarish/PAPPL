@@ -50,7 +50,13 @@ while received != b"end":
             race = int(type.decode())
         except:
             connection.send("Vous n'avez pas entré un nombre".encode())
-
+    if race == 1:
+        race = "Humain"
+    elif race == 2:
+        race = "IAaleatoire"
+    elif race == 3:
+        race = "IAminimax"
+    equipe_1.append([joueur, race])
     
     print(received.decode())
     if received.decode() == "script":
