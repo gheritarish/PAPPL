@@ -8,7 +8,7 @@ Created on Wed Mar  4 15:05:53 2020
 Cette fonction 
 """
 
-def actualise(position_joueur,positionIA,valeur_noeud,valeur_branche):
+def actualiseExtremum(position_joueur,positionIA,valeur_noeud,valeur_branche):
     if (valeur_noeud == None):
         return valeur_branche
     estAvecIA = ((((positionIA - position_joueur)%4)%2) == 0)
