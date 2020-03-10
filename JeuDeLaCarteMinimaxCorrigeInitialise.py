@@ -108,7 +108,7 @@ def jeuDeLaCarteMinimaxCorrigeInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cart
                     
                     if gagnant4==1:
                         plis_equipe1.append(cartes_pli)
-                        poid=  jeuDeLaCarteMinimaxCorrige(j1,j2,j3,j3,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur)
+                        poid=  jeuDeLaCarteMinimaxCorrige(j1,j2,j3,j4,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur)
                         plis_equipe1.remove(cartes_pli)
                             
                             
