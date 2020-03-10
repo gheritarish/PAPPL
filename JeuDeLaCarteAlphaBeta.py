@@ -180,22 +180,22 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
                             rebelote4 = rebelote3
                         if gagnant4 ==1:
                             plis_equipe1.append(cartes_pli)                            
-                            poids=jeuDeLaCarteAlphaBeta(j1,j2,j3,j4,couleur_atout,difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poids,preneur)
+                            poids=jeuDeLaCarteAlphaBeta(j1,j2,j3,j4,couleur_atout,difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poids,preneur,alpha3,beta3)
                             plis_equipe1.remove(cartes_pli)
                             
                         if gagnant4 ==2:
                             plis_equipe2.append(cartes_pli)                            
-                            poids=jeuDeLaCarteAlphaBeta(j2,j3,j4,j1,couleur_atout,difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poids,(preneur+1)%2)
+                            poids=jeuDeLaCarteAlphaBeta(j2,j3,j4,j1,couleur_atout,difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poids,(preneur+1)%2,alpha3,beta3)
                             plis_equipe2.remove(cartes_pli)
                             
                         if gagnant4 ==3:
                             plis_equipe1.append(cartes_pli)                            
-                            poids=jeuDeLaCarteAlphaBeta(j3,j4,j1,j2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poids,(preneur+2)%2)
+                            poids=jeuDeLaCarteAlphaBeta(j3,j4,j1,j2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poids,(preneur+2)%2,alpha3,beta3)
                             plis_equipe1.remove(cartes_pli)
                             
                         if gagnant4 ==4:
                             plis_equipe2.append(cartes_pli)                            
-                            poids=jeuDeLaCarteAlphaBeta(j4,j1,j2,j3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poids,(preneur+3)%2)
+                            poids=jeuDeLaCarteAlphaBeta(j4,j1,j2,j3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poids,(preneur+3)%2,alpha3,beta3)
                             plis_equipe2.remove(cartes_pli)
                             
                         cartes_pli.pop(-1)
