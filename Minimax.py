@@ -19,12 +19,12 @@ carte_meneuse = carte la plus forte du pli en cours (vaut 0 si aucune carte n'a 
 meneur = position du meneur du pli en cours (valeur entre 1 et 4)
 cartes_pli = liste des cartes du pli en cours
 difficule = valeur strictement positif qui correspond à la force de l'IA
-belote = entre 0 et 4 selon qu'un joueur ait dis ou non belote
+belote = entre 0 et 4 selon qu'un joueur ait dit ou non belote
 rebelote = entre 0 et 4 suivant qu'un joueur ait dit ou non rebelote
 plis_equipe1 = liste des plis de l'equipe 1 (c'est une liste de liste de cartes)
 plis equipe2 = liste des plis de l'equipe 2
-num_pli = numero du pli precedent
-preneur = equipe qui a prise en debut de partie (vaut 1 ou 2)
+num_pli = numéro du pli précédent
+preneur = equipe qui a pris en début de partie (vaut 1 ou 2)
 '''
 def minimax(cartesIA, paquet,couleur_atout,carte_meneuse,meneur, cartes_pli,difficulte,belote,rebelote,plis_equipe1,plis_equipe2,preneur):
     cartes_possibles=cartesJouables(cartesIA, cartes_pli, couleur_atout, carte_meneuse) # on recupère les cartes jouables

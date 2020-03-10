@@ -15,7 +15,7 @@ paramètre:
     @jeu1, jeu2, jeu3, jeu4 = jeux des 4 joueurs (dans l'ordre où ils vont jouer ce tour!) ce sont des listes de cartes
     @couleur_atout = couleur de l'atout de cette manche, c'est un string
     @cartes_pli = liste des cartes du pli en cours
-    @ difficulte = entier qui définie la difficulté de l'IA
+    @ difficulte = entier qui définit la difficulté de l'IA
     @ belote, rebelote = prend les valeurs entre 0 et 4 suivant qu'une belote ou une rebelote ait été dite ou non
     @ plis_equipe1 = liste des plis de l'equipe 1 depuis le debut de la manche(un plis etant une liste de 4 cartes) jeu1 et jeu3 sont les joueurs de cette equipe
     @plis_equipe2 = liste des plis de l'equipe 2 depuis le debut de la manche(un plis etant une liste de 4 cartes) jeu2 et jeu3 sont les joueurs de cette equipe

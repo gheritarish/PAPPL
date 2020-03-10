@@ -25,9 +25,9 @@ def partieDeBelote():
     paquet_de_carte = melangeCarte(paquet_de_carte)
     equipe_1=[]
     equipe_2=[]
-    type_de_partie = affichageOuiNon("voulez vous faire une partie aux points ou aux tours?",["points","tours"]) # On demande aux joueurs quelle type de partie ils souhaitent faire
+    type_de_partie = affichageOuiNon("Voulez-vous faire une partie aux points ou aux tours?",["points","tours"]) # On demande aux joueurs quelle type de partie ils souhaitent faire
     if type_de_partie=="points":
-        points_max = int(affichageOuiNon("combien de points maximum?",["100","200","300","400","500","1000"]))
+        points_max = int(affichageOuiNon("Cmbien de points maximum?",["100","200","300","400","500","1000"]))
     elif type_de_partie=="tours" :
         tours_max = int(affichageOuiNon("Nombre de tours? ",["1","2","3","4","5","6","7","8","9","10"]))
     joueur=affichageTexteInput("joueur 1 de l\'equipe 1: ")
@@ -82,7 +82,7 @@ def partieDeBelote():
     else:
         race = "IAminimax"
     equipe_2.append([str(joueur), race])
-    diffi = affichageOuiNon("rentrer le niveau de difficulter des IA (entier) : ",["1", "5","10","25","50","100"])
+    diffi = affichageOuiNon("rentrer le niveau de difficulté des IA (entier) : ",["1", "5","10","25","50","100"])
     difficulte = int(diffi)
     joueur=[equipe_1[0],equipe_2[0],equipe_1[1],equipe_2[1]]
     tirage1=str(affichageTexteInput("joueur equipe 1 qui tire au sort une carte: "))

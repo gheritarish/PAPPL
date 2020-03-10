@@ -31,7 +31,6 @@ def jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,reb
             points1, points2 = calculPointMinimax(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
             points_1,points_2 = updateScoreMinimax(0, 0, points1, points2, preneur)
 
-                
             if rebelote in [0, 2]: # On définit un poids égal au score de l'équipe qu'elle fait en jouant ainsi - le nombre de points nécessaires pour remporter le contrat
                 poids = poids + points_1 - 91
             else:
