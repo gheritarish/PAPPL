@@ -12,52 +12,33 @@ connection, info = tcp_socket.accept()
 
 received = connection.recv(1024)
 script = b"None"
-l = []
+jeu = []
+encheres = 0
 while received != b"end":
-    print(received.decode())
-    if received.decode() == "script":
-        connection.send("Which script do you want to use?\n1. Get the square of a number\n2. Play with a list".encode())
-        number = connection.recv(1024)
-        b = int(number.decode())
-        if b == 1:
-            script = "Square"
-        elif b == 2:
-            script = "Liste"
-        else:
-            script = "Retour"
+    if encheres < 2:
+        carte = connection.recv(1024)
+        prise = carte.split(' ')
+        if prise[0] == "reveal":
+            prendre = input("Voulez-vous prendre ? (o/n) ")
+            if prendre == "o":
+                if encheres == 0:
+                    message = "take 1"
+                    connection.send(message.encode())
+                if enchere == 1:
+                    couleur = input("À quelle couleur voulez-vous prendre (nom entier à taper sans majuscule) : ")
+                    message = "take 2 " + couleur
+                    connection.send(message.encode())
+            elif prendre == "n":
+                message = "take no"
+                connection.send(message.encode())
+            encheres += 1
+        elif prise[0] == "took":
+            preneur = prise[1]
+            atout = prise[2]
+            encheres = 2
+            break
+   else:
 
-        if script == "Square":
-            received = connection.recv(1024)
-            a = int(received.decode())
-            message = str(a) + " * " + str(a) + " = " + str(square(a))
-            print(message)
-            connection.send(message.encode())
-            received = connection.recv(1024)
-        elif script == "Liste":
-            message = "The current list is: " + str(l)
-            connection.send(message.encode())
-            
-            to_do = int(connection.recv(1024).decode())
-            if to_do == 1:
-                list_length = int(connection.recv(1024).decode())
-                for i in range(list_length):
-                    num_r = connection.recv(1024)
-                    num = int(num_r.decode())
-                    add_list(l, num)
-            elif to_do == 2:
-                to_rem = int(connection.recv(1024).decode())
-                rem_list(l, to_rem)
-            else:
-                break
-
-            message = "The result: " + str(l)
-            print(message)
-            connection.send(message.encode())
-            received = connection.recv(1024)
-        elif script == "Retour":
-            received = connection.recv(1024)
-    elif received.decode() == "end":
-        break
 
 print("Closing host...")
 connection.close()
