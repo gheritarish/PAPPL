@@ -38,6 +38,24 @@ while received != b"end":
             encheres = 2
             break
    else:
+       jouer = # On récupère la carte qu'on veut jouer
+       carte_a_jouer = str(jouer[0]) + '_' + str(jouer[1])
+       message = "play " + carte_a_jouer
+       connection.send(message.encode())
+       if jouer[0] in ('Roi', 'Dame') and jouer[1] == atout:
+           bel = input("Déclarer une belote ou rebelote ? (o/n) ")
+           if bel == "o":
+               print("1. Belote\n2. Rebelote")
+               bel = int(input("Que déclarer ?"))
+               if bel == 1:
+                   message = "declare belote"
+                   connection.send(message.encode())
+               else:
+                   message = "declare rebelote"
+                   conneciton.send(message.encode())
+            else:
+                message = "declare none"
+                connection.send(message.encode())
 
 
 print("Closing host...")
