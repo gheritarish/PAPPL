@@ -1,5 +1,4 @@
 import socket
-from Script import square, add_list, rem_list
 
 host = ''
 port = 5005
@@ -10,55 +9,58 @@ tcp_socket.listen(5)
 
 connection, info = tcp_socket.accept()
 
-received = connection.recv(1024)
-script = b"None"
 jeu = []
 encheres = 0
-while received != b"end":
+received = ""
+# Tirage de cartes
+atout = # Carte révélée
+pli = []
+ancien_pli = []
+while received != "end":
     if encheres < 2:
-        carte = connection.recv(1024)
-        prise = carte.split(' ')
-        if prise[0] == "reveal":
-            prendre = input("Voulez-vous prendre ? (o/n) ")
-            if prendre == "o":
-                if encheres == 0:
-                    message = "take 1"
-                    connection.send(message.encode())
-                if enchere == 1:
-                    couleur = input("À quelle couleur voulez-vous prendre (nom entier à taper sans majuscule) : ")
-                    message = "take 2 " + couleur
-                    connection.send(message.encode())
-            elif prendre == "n":
-                message = "take no"
+        message = "reveal " + atout[0] + '_' + atout[1]
+        connection.send(message.encode())
+        # Puis on reçoit la réponse du client
+        received = connection.recv(1024)
+        received = received.decode()
+            prise = message.split(' ')
+            if prise[1] == 1:
+                message = "took joueur " + atout[1]
                 connection.send(message.encode())
-            encheres += 1
-        elif prise[0] == "took":
-            preneur = prise[1]
-            atout = prise[2]
-            encheres = 2
-            break
-   else:
-       jouer = # On récupère la carte qu'on veut jouer
-       carte_a_jouer = str(jouer[0]) + '_' + str(jouer[1])
-       message = "play " + carte_a_jouer
-       connection.send(message.encode())
-       if jouer[0] in ('Roi', 'Dame') and jouer[1] == atout:
-           bel = input("Déclarer une belote ou rebelote ? (o/n) ")
-           if bel == "o":
-               print("1. Belote\n2. Rebelote")
-               bel = int(input("Que déclarer ?"))
-               if bel == 1:
-                   message = "declare belote"
-                   connection.send(message.encode())
-               else:
-                   message = "declare rebelote"
-                   conneciton.send(message.encode())
+            elif prise[1] == 2:
+                message = "took joueur " + prise[2]
+                connection.send(message.encode())
             else:
-                message = "declare none"
-                connection.send(message.encode())
+                break
+    else:
+        # On envoie d'abord les cartes de l'ancien pli
+        if ancien_pli == []:
+            message = "pli 0"
+        else:
+            cartes_pli = ""
+            for carte in ancien_pli:
+                cartes_pli.append(carte[0] + '_' + carte[1] + ' ')
+            message = "pli " + cartes_pli
+            connection.send(message.encode())
+        # On envoie ensuite celles du nouveau pli
+        if pli == []:
+            message = "actual 0"
+        else:
+            cartes_pli = ""
+            for carte in pli:
+                cartes_pli.append(carte[0] + '_' + carte[1] + ' ')
+            message = "pli " + cartes_pli
+            connection.send(message.encode())
+        
+        # Puis on récupère la carte jouée par le joueur
+        received = connection.recv(1024)
+        received = received.decode()
+        joue = received.split(' ')
+        carte = joue[1].split('_')
+        pli.append(carte)
+        if pli.length() == 4:
+            # On commence par gérer la victoire du pli
 
-
-print("Closing host...")
-connection.close()
-tcp_socket.close()
-print("Host closed.")
+            # Puis on fait un transfert dans les listes
+            ancien_pli = pli
+            pli = []
