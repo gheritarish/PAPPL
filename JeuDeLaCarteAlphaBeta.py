@@ -82,7 +82,7 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
         exploration_0_utile = True #au début, il est utile d'explorer --> on initialise exploration_utile
         nbCartesJouables_0 = len(cartesJouables(jeu1, cartes_pli, couleur_atout, carte_meneuse0)) #on calcule le nombre de cartes jouables possibles 
         i0 = 0 #on initialise i
-        alpha0, beta0 = str('-inf'), str('inf')
+        alpha0, beta0 = float('-inf'), float('inf')
         v0 = None
         while (exploration_0_utile and (i0 < nbCartesJouables_0)): #on parcours la liste des cartes jouables tant que l'exploration est utile et qu'il reste des cartes jouables à explorer
             carte1 = cartesJouables(jeu1, cartes_pli, couleur_atout, carte_meneuse0)[i0] #on prend la carte jouable suivante
@@ -102,7 +102,7 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
             exploration_1_utile = True #au début, il est utile d'explorer --> on initialise exploration_utile
             nbCartesJouables_1 = len(cartesJouables(jeu2, cartes_pli, couleur_atout, carte_meneuse1)) #on calcule le nombre de cartes jouables possibles 
             i1 = 0 #on initialise i
-            alpha1, beta1 = str('-inf'), str('inf')
+            alpha1, beta1 = float('-inf'), float('inf')
             v1 = None
             while (exploration_1_utile and (i1 < nbCartesJouables_1)): #on parcours la liste des cartes jouables tant que l'exploration est utile et qu'il reste des cartes jouables à explorer
                 carte2 = cartesJouables(jeu2, cartes_pli, couleur_atout, carte_meneuse1)[i1] #on prend la carte jouable suivante
@@ -126,7 +126,7 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
                 exploration_2_utile = True #au début, il est utile d'explorer --> on initialise exploration_utile
                 nbCartesJouables_2 = len(cartesJouables(jeu3, cartes_pli, couleur_atout, carte_meneuse2)) #on calcule le nombre de cartes jouables possibles 
                 i2 = 0 #on initialise i
-                alpha2, beta2 = str('-inf'), str('inf')
+                alpha2, beta2 = float('-inf'), float('inf')
                 v2 = None
                 while (exploration_2_utile and (i2 < nbCartesJouables_2)): #on parcours la liste des cartes jouables tant que l'exploration est utile et qu'il reste des cartes jouables à explorer
                     carte3 = cartesJouables(jeu3, cartes_pli, couleur_atout, carte_meneuse2)[i2] #on prend la carte jouable suivante
@@ -150,7 +150,7 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
                     exploration_3_utile = True #au début, il est utile d'explorer --> on initialise exploration_utile
                     nbCartesJouables_3 = len(cartesJouables(jeu4, cartes_pli, couleur_atout, carte_meneuse3)) #on calcule le nombre de cartes jouables possibles 
                     i3 = 0 #on initialise i
-                    alpha3, beta3 = str('-inf'), str('inf')
+                    alpha3, beta3 = float('-inf'), float('inf')
                     v3 = None
                     while (exploration_3_utile and (i3 < nbCartesJouables_3)): #on parcours la liste des cartes jouables tant que l'exploration est utile et qu'il reste des cartes jouables à explorer
                         carte4 = cartesJouables(jeu4, cartes_pli, couleur_atout, carte_meneuse3)[i3] #on prend la carte jouable suivante
@@ -221,5 +221,8 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
             if (exploration_1_utile):
                 alpha0, beta0 = miseAJourAB(v1, alpha0, beta0, 0, positionIA)
                 v0 = actualiseExtremum(0,positionIA,v0,v1)#on actualise le score : on choisit le plus grand ou le plus petit, en fonction de si le joueur 1 est avec l'IA ou pas
-        return v0
+        if (v0 == None):
+            return 0
+        else:
+            return float(v0)
 

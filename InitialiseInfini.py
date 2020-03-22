@@ -12,6 +12,6 @@ Si le joueur n'est pas avec l'IA, cette valeur est initialisée à +inf car on v
 
 def initialiseInfini(numero_joueur,positionIA):
     if ((((positionIA - numero_joueur)%4)%2) == 0):
-        return (str('-inf'))
+        return (float('-inf'))
     else:
-        return (str('inf'))
+        return (float('inf'))
