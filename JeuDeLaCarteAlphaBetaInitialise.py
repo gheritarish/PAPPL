@@ -10,7 +10,7 @@ from CompareCarteJeu import compareCarteJeu
 from JeuDeLaCarteAlphaBeta import jeuDeLaCarteAlphaBeta
 from InitialiseInfini import initialiseInfini
 from ActualiseExtremum import actualiseExtremum
-from sortDeLIntervelle import sortDeLIntervalle
+from sortDeLIntervalle import sortDeLIntervalle
 from MiseAJourAB import miseAJourAB
 from LaBorne import laBorne
 
