@@ -31,8 +31,8 @@ paramètre:
 
 def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,positionIA,poid,premiere_carte,carte_meneuse,meneur,preneur):
 
-    alpha = str('-inf')
-    beta = str('inf')
+    alpha = float('-inf')
+    beta = float('inf')
     
     if len(cartes_pli)==0:
         cartes_possibles=cartesJouables(jeu1, cartes_pli, couleur_atout, carte_meneuse)
