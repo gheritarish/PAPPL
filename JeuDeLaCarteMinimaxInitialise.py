@@ -7,7 +7,7 @@ Created on Wed Nov 27 16:09:45 2019
 
 from CartesJouables import cartesJouables
 from CompareCarteJeu import compareCarteJeu
-from JeuDeLaCarteMinimax import jeuDeLaCarteMinimax
+from JeuDeLaCarteAlphaBeta import jeuDeLaCarteAlphaBeta
 
 """
 Cette fonction va traiter le premier tour où l'IA doit choisir la carte qu'il doit jouer. 
@@ -15,7 +15,7 @@ paramètre:
     @jeu1, jeu2, jeu3, jeu4 = jeux des 4 joueurs (dans l'ordre où ils vont jouer ce tour!) ce sont des listes de cartes
     @couleur_atout = couleur de l'atout de cette manche, c'est un string
     @cartes_pli = liste des cartes du pli en cours
-    @ difficulte = entier qui définit la difficulté de l'IA
+    @ difficulte = entier qui définie la difficulté de l'IA
     @ belote, rebelote = prend les valeurs entre 0 et 4 suivant qu'une belote ou une rebelote ait été dite ou non
     @ plis_equipe1 = liste des plis de l'equipe 1 depuis le debut de la manche(un plis etant une liste de 4 cartes) jeu1 et jeu3 sont les joueurs de cette equipe
     @plis_equipe2 = liste des plis de l'equipe 2 depuis le debut de la manche(un plis etant une liste de 4 cartes) jeu2 et jeu3 sont les joueurs de cette equipe
@@ -30,6 +30,9 @@ paramètre:
 """
 
 def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,difficulte,belote,rebelote,plis_equipe1,plis_equipe2,num_pli,positionIA,poid,premiere_carte,carte_meneuse,meneur,preneur):
+
+    alpha = str('-inf')
+    beta = str('inf')
     
     if len(cartes_pli)==0:
         cartes_possibles=cartesJouables(jeu1, cartes_pli, couleur_atout, carte_meneuse)
@@ -103,24 +106,24 @@ def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,
                     
                     if gagnant4==1:
                         plis_equipe1.append(cartes_pli)
-                        poid=  jeuDeLaCarteMinimax(j1,j2,j3,j3,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur)
+                        poid=  jeuDeLaCarteAlphaBeta(j1,j2,j3,j4,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur,alpha,beta)
                         plis_equipe1.remove(cartes_pli)
                             
                             
                     elif gagnant4==2:
                         plis_equipe2.append(cartes_pli)                        
-                        poid =  jeuDeLaCarteMinimax(j2,j3,j4,j1,couleur_atout, difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poid,(preneur+1)%2)
+                        poid =  jeuDeLaCarteAlphaBeta(j2,j3,j4,j1,couleur_atout, difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poid,(preneur+1)%2,alpha,beta)
                         plis_equipe2.remove(cartes_pli)                        
                         
                     elif gagnant4==3:
                         plis_equipe1.append(cartes_pli)                        
-                        poid = jeuDeLaCarteMinimax(j3,j4,j1,j2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poid,(preneur+2)%2)
+                        poid = jeuDeLaCarteAlphaBeta(j3,j4,j1,j2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poid,(preneur+2)%2,alpha,beta)
                         plis_equipe1.remove(cartes_pli)   
                             
                             
                     elif gagnant4==4:
                         plis_equipe2.append(cartes_pli)                        
-                        poid =  jeuDeLaCarteMinimax(j4,j1,j2,j3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2)
+                        poid =  jeuDeLaCarteAlphaBeta(j4,j1,j2,j3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2,alpha,beta)
                         plis_equipe2.remove(cartes_pli)                        
                     cartes_pli.pop(-1)
                 cartes_pli.pop(-1)
@@ -184,22 +187,22 @@ def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,
                     rebelote4 = rebelote3
                 if gagnant4==1:
                     plis_equipe1.append(cartes_pli)                    
-                    poid=  jeuDeLaCarteMinimax(jeu1,j2,j3,j4,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur)
+                    poid=  jeuDeLaCarteAlphaBeta(jeu1,j2,j3,j4,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur,alpha,beta)
                     plis_equipe1.remove(cartes_pli)
                         
                 elif gagnant4==2:
                     plis_equipe2.append(cartes_pli)                    
-                    poid = jeuDeLaCarteMinimax(j2,j3,j4,jeu1,couleur_atout, difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poid,(preneur+1)%2)
+                    poid = jeuDeLaCarteAlphaBeta(j2,j3,j4,jeu1,couleur_atout, difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poid,(preneur+1)%2,alpha,beta)
                     plis_equipe2.remove(cartes_pli)
                     
                 elif gagnant4==3:
                     plis_equipe1.append(cartes_pli)                    
-                    poid = jeuDeLaCarteMinimax(j3,j4,jeu1,j2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poid,(preneur+2)%2)
+                    poid = jeuDeLaCarteAlphaBeta(j3,j4,jeu1,j2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poid,(preneur+2)%2,alpha,beta)
                     plis_equipe1.remove(cartes_pli)
                     
                 elif gagnant4==4:
                     plis_equipe2.append(cartes_pli)                    
-                    poid = jeuDeLaCarteMinimax(j4,jeu1,j2,j3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2)
+                    poid = jeuDeLaCarteAlphaBeta(j4,jeu1,j2,j3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2,alpha,beta)
                     plis_equipe2.remove(cartes_pli)
                 cartes_pli.pop(-1)
             cartes_pli.pop(-1)
@@ -245,22 +248,22 @@ def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,
                 rebelote4 = rebelote3                
             if gagnant4==1:
                 plis_equipe1.append(cartes_pli)
-                poid= jeuDeLaCarteMinimax(jeu1,jeu2,j3,j4,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur)
+                poid= jeuDeLaCarteAlphaBeta(jeu1,jeu2,j3,j4,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur,alpha,beta)
                 plis_equipe1.remove(cartes_pli)
                 
             elif gagnant4==2:
                 plis_equipe2.append(cartes_pli)
-                poid = jeuDeLaCarteMinimax(jeu2,j3,j4,jeu1,couleur_atout, difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poid,(preneur+1)%2)
+                poid = jeuDeLaCarteAlphaBeta(jeu2,j3,j4,jeu1,couleur_atout, difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poid,(preneur+1)%2,alpha,beta)
                 plis_equipe2.remove(cartes_pli)
                 
             elif gagnant4==3:
                 plis_equipe1.append(cartes_pli)
-                poid = jeuDeLaCarteMinimax(j3,j4,jeu1,jeu2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poid,(preneur+2)%2)
+                poid = jeuDeLaCarteAlphaBeta(j3,j4,jeu1,jeu2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poid,(preneur+2)%2,alpha,beta)
                 plis_equipe1.remove(cartes_pli)
                 
             elif gagnant4==4:
                 plis_equipe2.append(cartes_pli)
-                poid = jeuDeLaCarteMinimax(j4,jeu1,jeu2,j3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2)
+                poid = jeuDeLaCarteAlphaBeta(j4,jeu1,jeu2,j3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2,alpha,beta)
                 plis_equipe2.remove(cartes_pli)
             cartes_pli.pop(-1) 
         cartes_pli.pop(-1)
@@ -287,22 +290,22 @@ def jeuDeLaCarteMinimaxInitialise(jeu1,jeu2,jeu3,jeu4,couleur_atout, cartes_pli,
             rebelote4 = rebelote        
         if gagnant4==1:
             plis_equipe1.append(cartes_pli)
-            poid= jeuDeLaCarteMinimax(jeu1,jeu2,jeu3,j4,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur)
+            poid= jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,j4,couleur_atout, difficulte,belote4,rebelote4,plis_equipe1,plis_equipe2,num_pli+1,positionIA,poid,preneur,alpha,beta)
             plis_equipe1.remove(cartes_pli)
             
         elif gagnant4==2:
             plis_equipe2.append(cartes_pli)
-            poid = jeuDeLaCarteMinimax(jeu2,jeu3,j4,jeu1,couleur_atout, difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poid,(preneur+1)%2)
+            poid = jeuDeLaCarteAlphaBeta(jeu2,jeu3,j4,jeu1,couleur_atout, difficulte,(belote4+1)%4,(rebelote4+1)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+1)%4,poid,(preneur+1)%2,alpha,beta)
             plis_equipe2.remove(cartes_pli)
             
         elif gagnant4==3:
             plis_equipe1.append(cartes_pli)
-            poid = jeuDeLaCarteMinimax(jeu3,j4,jeu1,jeu2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poid,(preneur+2)%2)
+            poid = jeuDeLaCarteAlphaBeta(jeu3,j4,jeu1,jeu2,couleur_atout, difficulte,(belote4+2)%4,(rebelote4+2)%4,plis_equipe1,plis_equipe2,num_pli+1,(positionIA+2)%4,poid,(preneur+2)%2,alpha,beta)
             plis_equipe1.remove(cartes_pli)
             
         elif gagnant4==4:
             plis_equipe2.append(cartes_pli)
-            poid = jeuDeLaCarteMinimax(j4,jeu1,jeu2,jeu3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2)
+            poid = jeuDeLaCarteAlphaBeta(j4,jeu1,jeu2,jeu3,couleur_atout, difficulte,(belote4+3)%4,(rebelote4+3)%4,plis_equipe2,plis_equipe1,num_pli+1,(positionIA+3)%4,poid,(preneur+3)%2,alpha,beta)
             plis_equipe2.remove(cartes_pli)
         cartes_pli.pop(-1)
     return poid
