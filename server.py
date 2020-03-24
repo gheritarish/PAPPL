@@ -9,6 +9,21 @@ tcp_socket.listen(5)
 
 connection, info = tcp_socket.accept()
 
+# La connection est effectuée
+received = connection.recv(1024)
+message = received.decode()
+nom = message.split(' ')
+name = nom[1]
+received = connection.recv(1024)
+message = received.decode()
+config = message.split(' ')
+nb_hum = config[2]
+nb_ia = config[4]
+if nb_ia != 0:
+    diff_ia = config[5]
+else:
+    diff_ia = 0
+
 jeu = []
 encheres = 0
 received = ""
@@ -22,16 +37,16 @@ while received != "end":
         connection.send(message.encode())
         # Puis on reçoit la réponse du client
         received = connection.recv(1024)
-        received = received.decode()
-            prise = message.split(' ')
-            if prise[1] == 1:
-                message = "took joueur " + atout[1]
-                connection.send(message.encode())
-            elif prise[1] == 2:
-                message = "took joueur " + prise[2]
-                connection.send(message.encode())
-            else:
-                break
+        message = received.decode()
+        prise = message.split(' ')
+        if prise[1] == 1:
+            message = "took joueur " + atout[1]
+            connection.send(message.encode())
+        elif prise[1] == 2:
+            message = "took joueur " + prise[2]
+            connection.send(message.encode())
+        else:
+            break
     else:
         # On envoie d'abord les cartes de l'ancien pli
         if ancien_pli == []:

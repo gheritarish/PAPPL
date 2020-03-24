@@ -7,7 +7,19 @@ host_connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host_connection.connect((host, port))
 print("Connection established on port: {}".format(port))
 
+# La connection est effectuée, on peut envoyer notre nom puis la configuration de la partie
+nom = input("Quel est votre nom ? ")
+message = "name " + nom
+connection.send(message.encode())
+nb_hum = 4
+while nb_hum > 3 or nb_hum < 0:
+    nb_hum = int(input("Avec combien d'humains voulez-vous jouer ? (entre 0 et 3) "))
+nb_ia = 3 - nb_hum
+diff_ia = int(input("Quelle difficulté pour les IA ? (Valeur numérique, plus elle est élevée, plus les IA seront douées) "))
+message = "against humans " + nb_hum + " ia " + nb_ia + " " + diff_ia
+connection.send(message.encode())
 
+# La configuration a été envoyée, on peut jouer
 to_send = ""
 jeu = []
 encheres = 0
