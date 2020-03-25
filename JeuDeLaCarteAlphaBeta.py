@@ -52,29 +52,6 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
             else:
                 poids = points_2 - 81
             return poids
-    elif ((num_pli==3) and (len(jeu1)==5)) or ((num_pli==3) and (len(jeu1)==4)) or ((num_pli==3) and (len(jeu1)==3)) :
-        if positionIA in [0,2]: # ATTENTION : on ne connait pas encore gagnant_der           
-            points1, points2 = calculPointMinimax(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # On calcule les points de l'équipe, les points de l'équipe 2 ne sont pas importants
-            point_intermediare = 152 - points1 - points2
-            points_1,points_2 = updateScoreMinimax(0, 0, points1 + point_intermediare//2, points2+ point_intermediare//2, preneur)
-            
-                
-            if rebelote in [0, 2]: # On définit un poids égal au score de l'équipe qu'elle fait en jouant ainsi - le nombre de points nécessaires pour remporter le contrat
-                poids = points_1 - 91
-            else:
-                poids = points_1 - 81
-            return poids
-        else:
-            points1, points2 = calculPointMinimax(plis_equipe1, plis_equipe2, 1, couleur_atout, rebelote) # Les points de l'équipe 1 ne sont pas intéressants
-            point_intermediare = 152 - points1 - points2
-            points_1,points_2 = updateScoreMinimax(0, 0, points1+ point_intermediare//2, points2+ point_intermediare//2, preneur)
- 
-                
-            if rebelote in [1, 3]:
-                poids = points_2 - 91
-            else:
-                poids = points_2 - 81
-            return poids        
     else : 
         cartes_pli=[]
         carte_meneuse0=0
