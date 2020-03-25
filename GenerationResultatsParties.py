@@ -37,6 +37,7 @@ def GenDeBelote():
         race = "IAminimax"
     equipe_1.append([str(joueur), race])
     joueur= "2" #"joueur 2 de l'equipe 1: "
+    #joueur = str(joueur)
     while (joueur in equipe_1 or joueur =='') :
         joueur=affichageTexteInput("Ce nom est déjà pris, joueur 2 de l\'equipe 1: ")
         joueur = str(joueur)
@@ -137,5 +138,3 @@ def GenDeBelote():
                 enregistre(nv_jeu, plis_equipe1[0],"vide",gagnant, preneur, points_1, points_2,atout) #on indique vide lorsque l'équipe 2 n'a fait aucun pli et on aura v  dans la première colonne de l'équipe 2 puis i,... dans le fichier csv
             else:
                 enregistre(nv_jeu, plis_equipe1[0], plis_equipe2[0],gagnant, preneur, points_1, points_2, atout)
-    
-    
