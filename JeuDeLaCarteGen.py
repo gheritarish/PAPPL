@@ -8,9 +8,20 @@ from Pli import pli
 from CreationPaquetDeCartes import creationPaquetDeCartes
 from SuppressionCartes import suppressionCartes
 from OrdreJoueur import ordreJoueur
-
+"""
+Cette fonction reprend le script du jeuDeLaCarte en enlevant la boucle for qui simulait les huits plis, pour avoir le premier pli
+paramètres:
+    @jeu1: main du joueur1
+    @jeu2: main du joueur2
+    @jeu3: main du joueur3
+    @jeu4: main du joueur4
+    @atout: atout de la partie en cours
+    @joueur: le joueur qui commence
+    @difficulte: niveau de difficulté de l'IA
+    @preneur: joueur qui a pris l'atout
+"""
 def jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout,joueur,difficulte,preneur):
-    """Fonction qui permet de gérer les plis. Les 4 jeux sont des listes de carte, atout est la couleur de l'atout et joueur le premier joueur"""
+    
     belote = 4 # Le joueur 4 n'existe pas, belote et rebelote restent à 4 si personne ne les a
     rebelote=4
     gagnant_prec = 0

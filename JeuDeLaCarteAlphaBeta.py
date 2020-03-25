@@ -14,8 +14,8 @@ from MiseAJourAB import miseAJourAB
 from SortDeLIntervalle import sortDeLIntervalle
 from LaBorne import laBorne
 """
-Cette fonction sera appelé à la fin pour finir les tours de jeux pour chaque appel récurssif de l'IA 
-paramètre:
+Cette fonction sera appelée à la fin pour finir les tours de jeux pour chaque appel récursif de l'IA 
+paramètres:
     @jeu1, jeu2, jeu3, jeu4 = jeux des 4 joueurs (dans l'ordre où ils vont jouer ce tour!) ce sont des listes de cartes
     @couleur_atout = couleur de l'atout de cette manche, c'est un string
     @ difficulte = entier qui définie la difficulté de l'IA
@@ -202,7 +202,8 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
                         if (sortDeLIntervalle(poids, alpha2, beta2)):
                             exploration_3_utile = False
                         else:
-                            v3 = actualiseExtremum(3,positionIA,v3,poids)#on actualise le score : on choisit le plus grand ou le plus petit, en fonction de si le joueur 4 est avec l'IA ou pas
+                            v3 = actualiseExtremum(3,positionIA,v3,poids)#on actualise le score : on choisit le plus grand ou le plus petit, selon si le joueur 4 est avec l'IA ou pas
+                            return float(v3)
                     cartes_pli.pop(-1)
                     if (exploration_3_utile):
                         alpha2, beta2 = miseAJourAB(v3, alpha2, beta2, 2, positionIA)
@@ -210,6 +211,7 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
                             exploration_2_utile = False
                         else:
                             v2 = actualiseExtremum(2,positionIA,v2,v3)#on actualise le score : on choisit le plus grand ou le plus petit, en fonction de si le joueur 3 est avec l'IA ou pas
+                            return float(v2)
                 cartes_pli.pop(-1)
                 if (exploration_2_utile):
                     alpha1, beta1 = miseAJourAB(v2, alpha1, beta1, 1, positionIA)
@@ -217,12 +219,13 @@ def jeuDeLaCarteAlphaBeta(jeu1,jeu2,jeu3,jeu4,couleur_atout, difficulte,belote,r
                         exploration_1_utile = False
                     else:
                         v1 = actualiseExtremum(1,positionIA,v1,v2)#on actualise le score : on choisit le plus grand ou le plus petit, en fonction de si le joueur 2 est avec l'IA ou pas
+                        return float(v1)
             cartes_pli.pop(-1)
             if (exploration_1_utile):
                 alpha0, beta0 = miseAJourAB(v1, alpha0, beta0, 0, positionIA)
                 v0 = actualiseExtremum(0,positionIA,v0,v1)#on actualise le score : on choisit le plus grand ou le plus petit, en fonction de si le joueur 1 est avec l'IA ou pas
         if (v0 == None):
-            return 0
+            return 0 # valeur choisie de manière arbitraire, influence le poids calculé si la branche avait un gain négatif (minimise la perte en mettant 0 par défaut et minimise le gain si le gain est positif)
         else:
             return float(v0)
 

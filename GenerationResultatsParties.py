@@ -14,11 +14,14 @@ from CalculPoint import calculPoint
 from UpdateScore import updateScore
 from AffichageTexteInput import affichageTexteInput
 from AffichageOuiNon import affichageOuiNon
-from AffichageTexte import affichageTexte
 from Enregistrement import enregistre
-def GenDeBelote():
-    """Fonction qui permet de générer des résultats de parties de belote en faisant appel aux autres fonctions"""
 
+"""
+Cette fonction permet de générer des résultats de plis de belote en faisant appel aux autres fonctions
+"""
+
+def GenDeBelote():
+    
     paquet_de_carte = creationPaquetDeCartes()
     paquet_de_carte = melangeCarte(paquet_de_carte)
     equipe_1=[]
@@ -49,7 +52,6 @@ def GenDeBelote():
         race = "IAminimax"
     equipe_1.append([str(joueur), race])
     joueur="3" #"joueur 1 de l'equipe 2: "
-    #joueur = str(joueur)
     while (joueur in equipe_1 or joueur =='') :
         joueur=affichageTexteInput("Ce nom est déjà pris, joueur 1 de l\'equipe 2: ")
         joueur = str(joueur)
@@ -108,12 +110,11 @@ def GenDeBelote():
     if type_de_partie=="tours": # Dans le cas d'une partie au nombre de donnes
         k = 0
         while k < tours_max or score_reporte != 0:
-           # affichageTexte("le joueur qui commence est :" + joueur[0][0])
             points_1=0
             points_2=0
             paquet_de_carte = melangeCarte(paquet_de_carte)
             jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte, joueur)
-            nv_jeu = jeu1 + jeu2 + jeu3 + jeu4
+            nv_jeu = jeu1 + jeu2 + jeu3 + jeu4 #on obtient la répartition des cartes entre les 4 joueurs, on obtient ainsi les 4
             while jeu1 == "On redistribue":
                 jeu1,jeu2,jeu3,jeu4,atout,preneur = distribution(paquet_de_carte,joueur)
             plis_equipe1, plis_equipe2, gagnant, belote = jeuDeLaCarte(jeu1, jeu2, jeu3, jeu4, atout, joueur,difficulte,preneur)
@@ -128,10 +129,6 @@ def GenDeBelote():
                 points_1,points_2, score_reporte = updateScore(points_1, points_2, p1, p2, 2, equipe_belote, score_reporte)
             joueur= ordreJoueur(joueur[0][0],joueur)
             k += 1
-            plis_equipe = plis_equipe1 + plis_equipe2
-            points_ann = points_1 + points_2
-            print(plis_equipe)
-            print(points_ann)
             if plis_equipe1 == []:
                 enregistre(nv_jeu, "vide", plis_equipe2[0],gagnant, preneur, points_1, points_2,atout) #on indique vide lorsque l'équipe 1 n'a fait aucun pli et on aura v  dans la première colonne de l'équipe 1 puis i,... dans le fichier csv
             elif plis_equipe2 == []:
